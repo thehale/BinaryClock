@@ -27,6 +27,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import BinaryDigit from './src/components/BinaryDigit';
+
 const Section: React.FC<{
   title: string;
 }> = ({ children, title }) => {
@@ -70,51 +72,23 @@ const App = () => {
 
     return () => clearInterval(toggle);
   })
-  let hours = [<Text>{time.getHours()}: </Text>]
-  let minutes = [<Text>{time.getMinutes()}: </Text>]
-  let seconds = [<Text>{time.getSeconds()}: </Text>]
-  for (let i = 0; i < time.getHours(); i++) {
-    hours.push(<Text>.</Text>)
-  }
-  for (let i = 0; i < time.getMinutes(); i++) {
-    minutes.push(<Text>.</Text>)
-  }
-  for (let i = 0; i < time.getSeconds(); i++) {
-    seconds.push(<Text>.</Text>)
-  }
 
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: 'auto',
+            marginBottom: 'auto',
+            height: "100%",
           }}>
-          <Section title="Current Time">
-            {hours}{'\n'}
-            {minutes}{'\n'}
-            {seconds}
-          </Section>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+          <BinaryDigit value={time.getHours()}></BinaryDigit>
+          <BinaryDigit value={time.getMinutes()}></BinaryDigit>
+          <BinaryDigit value={time.getSeconds()}></BinaryDigit>
         </View>
-      </ScrollView>
     </SafeAreaView>
   );
 };
