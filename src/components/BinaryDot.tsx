@@ -18,10 +18,10 @@ const styles = StyleSheet.create({
     backgroundColor: "green",
   },
   activeDot: {
-    opacity: 1,
+    opacity: 0.5,
   },
   inactiveDot: {
-    opacity: 0.25,
+    opacity: 0.1,
   },
 });
 
