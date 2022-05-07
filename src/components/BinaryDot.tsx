@@ -1,11 +1,19 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text} from "react-native";
 
 const BinaryDot: React.FC<{
   active: boolean;
-}> = ({active}) => {
+  value?: number;
+  showHints?: boolean;
+}> = ({active, value, showHints=false}) => {
   return (
-    <View style={[styles.dot, active ? styles.activeDot : styles.inactiveDot]}></View>
+    <View style={[styles.dot, active ? styles.activeDot : styles.inactiveDot]}>
+      {showHints && value && (
+        <View style={styles.hint}>
+          <Text style={styles.hintText}>{value}</Text>
+        </View>
+      )}
+    </View>
   )
 } 
 
@@ -18,11 +26,23 @@ const styles = StyleSheet.create({
     backgroundColor: "green",
   },
   activeDot: {
-    opacity: 0.5,
+    opacity: 1.0,
   },
   inactiveDot: {
-    opacity: 0.1,
+    opacity: 0.5,
   },
+  hint: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 'auto',
+    marginBottom: 'auto',
+    height: "100%",
+  },
+  hintText: {
+    color: "white",
+    fontSize: 20,
+    opacity: 0.25,
+  }
 });
 
 export default BinaryDot;

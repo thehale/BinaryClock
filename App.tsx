@@ -1,13 +1,7 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  View,
-  StatusBar,
-  useColorScheme,
-} from 'react-native';
+import { View, StatusBar } from 'react-native';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-
 import KeepAwake from 'react-native-keep-awake';
 
 import BinaryClock from './src/components/BinaryClock';
@@ -23,8 +17,8 @@ const App = () => {
   return (
     <View style={backgroundStyle}>
       <StatusBar hidden={true} barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-        <KeepAwake />
-        <BinaryClock isDarkMode={isDarkMode} />
+      <KeepAwake />
+      <BinaryClock isDarkMode={isDarkMode} />
     </View>
   );
 };
