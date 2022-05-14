@@ -1,25 +1,35 @@
 import React from 'react';
-import { View, StatusBar } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-import KeepAwake from 'react-native-keep-awake';
+import BinaryClockScreen from './src/pages/BinaryClockScreen';
+import BinaryClockSettingsScreen from './src/pages/BinaryClockSettingsScreen';
+import Toast from 'react-native-toast-message';
 
-import BinaryClock from './src/components/BinaryClock';
-
+const Stack = createNativeStackNavigator();
 
 const App = () => {
-  const isDarkMode = true // useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   return (
-    <View style={backgroundStyle}>
-      <StatusBar hidden={true} barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <KeepAwake />
-      <BinaryClock isDarkMode={isDarkMode} />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="BinaryClockScreen"
+          component={BinaryClockScreen}
+          options={{
+            title: 'Binary Clock',
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="BinaryClockSettingsScreen"
+          component={BinaryClockSettingsScreen}
+          options={{
+            title: 'Binary Clock Settings',
+          }}
+        />
+      </Stack.Navigator>
+      <Toast position={'bottom'} />
+    </NavigationContainer>
   );
 };
 

@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "equimper.react-native-react-redux",
+        "esbenp.prettier-vscode",
+        "msjsdiag.vscode-react-native",
+        "ms-vscode.vscode-typescript-next",
+        "dbaeumer.vscode-eslint",
+        "wix.glean"
+    ]
+}
