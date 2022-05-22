@@ -1,5 +1,8 @@
 {
     "cSpell.words": [
         "Pressable"
-    ]
+    ],
+    "licenser.author": "Joseph Hale",
+    "licenser.license": "MPLv2",
+    "licenser.projectName": "Binary Clock"
 }

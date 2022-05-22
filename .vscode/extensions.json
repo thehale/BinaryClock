@@ -5,6 +5,7 @@
         "msjsdiag.vscode-react-native",
         "ms-vscode.vscode-typescript-next",
         "dbaeumer.vscode-eslint",
-        "wix.glean"
+        "wix.glean",
+        "ymotongpoo.licenser"
     ]
 }
