@@ -7,17 +7,30 @@
 import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 
-const BinaryDot: React.FC<{
+interface BinaryDotProps {
   active: boolean;
+  visible?: boolean;
   value?: number;
   brightness?: number;
   showHints?: boolean;
-}> = ({active, value, brightness = 0.5, showHints = false}) => {
+}
+
+const BinaryDot: React.FC<BinaryDotProps> = args => {
+  const defaults = {
+    visible: true,
+    value: 1,
+    brightness: 1,
+    showHints: false,
+  };
+  const props = {...defaults, ...args};
+  let active_modifier = props.active ? 1 : 0.25;
+  let visible_modifier = props.visible ? 1 : 0;
+  let opacity = props.brightness * active_modifier * visible_modifier;
   return (
-    <View style={[styles.dot, {opacity: active ? brightness : brightness / 4}]}>
-      {showHints && value && (
+    <View style={[styles.dot, {opacity: opacity}]}>
+      {props.showHints && props.value && (
         <View style={styles.hint}>
-          <Text style={styles.hintText}>{value}</Text>
+          <Text style={styles.hintText}>{props.value}</Text>
         </View>
       )}
     </View>

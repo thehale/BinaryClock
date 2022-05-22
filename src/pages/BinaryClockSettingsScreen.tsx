@@ -8,6 +8,7 @@ import Slider from '@react-native-community/slider';
 import React from 'react';
 import {
   Button,
+  SafeAreaView,
   StyleSheet,
   Text,
   useWindowDimensions,
@@ -43,22 +44,28 @@ const BinaryClockSettingScreen: React.FC = () => {
       });
   }
   return (
-    <View
-      style={[
-        styles.container,
-        // eslint-disable-next-line react-native/no-inline-styles
-        {flexDirection: height > width ? 'column' : 'row'},
-      ]}>
-      <View style={styles.clockPreview}>
-        <BinaryClock orientation={clockOrientation} brightness={brightness} />
+    <SafeAreaView>
+      <View
+        style={[
+          styles.container,
+          // eslint-disable-next-line react-native/no-inline-styles
+          {flexDirection: height > width ? 'column' : 'row'},
+        ]}>
+        <View style={styles.clockPreview}>
+          <BinaryClock orientation={clockOrientation} brightness={brightness} />
+        </View>
+        <View style={styles.settingsContainer}>
+          <Text style={styles.label}>Brightness</Text>
+          <Text style={styles.description}>{brightnessString}</Text>
+          <Slider
+            value={brightness}
+            onValueChange={setBrightness}
+            step={0.01}
+          />
+          <Button title="Save" onPress={saveSettings} />
+        </View>
       </View>
-      <View style={styles.settingsContainer}>
-        <Text style={styles.label}>Brightness</Text>
-        <Text style={styles.description}>{brightnessString}</Text>
-        <Slider value={brightness} onValueChange={setBrightness} step={0.01} />
-        <Button title="Save" onPress={saveSettings} />
-      </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

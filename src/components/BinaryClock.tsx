@@ -10,10 +10,20 @@ import {StyleSheet, View} from 'react-native';
 import BinaryDigit from './BinaryDigit';
 import Orientation from '../utils/orientation';
 
-const BinaryClock: React.FC<{
-  orientation: Orientation;
+interface BinaryClockProps {
+  orientation?: Orientation;
   brightness?: number;
-}> = ({orientation, brightness = 0.5}) => {
+  showHints?: boolean;
+}
+
+const BinaryClock: React.FC<BinaryClockProps> = args => {
+  const defaults = {
+    orientation: Orientation.Landscape,
+    brightness: 0.5,
+    showHints: false,
+  };
+  const props = {...defaults, ...args};
+
   const [time, setTime] = useState(new Date());
   useEffect(() => {
     const toggle = setInterval(() => {
@@ -21,26 +31,54 @@ const BinaryClock: React.FC<{
     }, 50);
     return () => clearInterval(toggle);
   });
+
+  let digits = [];
+  let hours = time.getHours();
+  let minutes = time.getMinutes();
+  let seconds = time.getSeconds();
+  switch (props.orientation) {
+    case Orientation.Portrait:
+      digits = [
+        {key: 'h', value: hours, maxVisible: 23},
+        {key: 'm', value: minutes, maxVisible: 59},
+        {key: 's', value: seconds, maxVisible: 59},
+      ];
+      break;
+    case Orientation.Landscape:
+      digits = [
+        {key: 'h10', value: firstDigit(hours), maxVisible: 2},
+        {key: 'h1', value: secondDigit(hours), maxVisible: 9},
+        {key: 'm10', value: firstDigit(minutes), maxVisible: 5},
+        {key: 'm1', value: secondDigit(minutes), maxVisible: 9},
+        {key: 's10', value: firstDigit(seconds), maxVisible: 5},
+        {key: 's1', value: secondDigit(seconds), maxVisible: 9},
+      ];
+      break;
+  }
+  let maxValue = Math.max(...digits.map(digit => digit.maxVisible));
+
   return (
     <View style={styles.binaryClock}>
-      <BinaryDigit
-        value={time.getHours()}
-        orientation={orientation}
-        brightness={brightness}
-      />
-      <BinaryDigit
-        value={time.getMinutes()}
-        orientation={orientation}
-        brightness={brightness}
-      />
-      <BinaryDigit
-        value={time.getSeconds()}
-        orientation={orientation}
-        brightness={brightness}
-      />
+      {digits.map(digit => (
+        <BinaryDigit
+          key={digit.key}
+          value={digit.value}
+          maxVisible={digit.maxVisible}
+          maxValue={maxValue}
+          brightness={props.brightness}
+          showHints={props.showHints}
+        />
+      ))}
     </View>
   );
 };
+
+function firstDigit(value: number) {
+  return Math.floor(value / 10);
+}
+function secondDigit(value: number) {
+  return value % 10;
+}
 
 const styles = StyleSheet.create({
   binaryClock: {
@@ -48,6 +86,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: '5%',
     height: '100%',
     backgroundColor: 'black',
+    alignItems: 'center',
   },
 });
 

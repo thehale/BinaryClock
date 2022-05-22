@@ -2,6 +2,10 @@
 #
 .DS_Store
 
+# VS Code
+#
+.vscode/.react
+
 # Xcode
 #
 build/
