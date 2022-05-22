@@ -10,13 +10,14 @@ import KeepAwake from 'react-native-keep-awake';
 
 import BinaryClock from '../components/BinaryClock';
 import Orientation from '../utils/orientation';
-import {useBrightness} from '../utils/BinaryClockSettings';
+import {useBrightness, useShowHints} from '../utils/BinaryClockSettings';
 import Toast from 'react-native-toast-message';
 
 const BinaryClockScreen: React.FC<{
   navigation: any;
 }> = ({navigation}) => {
   const [brightness] = useBrightness();
+  const [showHints] = useShowHints();
   const {height, width} = useWindowDimensions();
   let orientation =
     height > width ? Orientation.Portrait : Orientation.Landscape;
@@ -34,7 +35,11 @@ const BinaryClockScreen: React.FC<{
       <View>
         <StatusBar hidden={true} />
         <KeepAwake />
-        <BinaryClock orientation={orientation} brightness={brightness} />
+        <BinaryClock
+          orientation={orientation}
+          brightness={brightness}
+          showHints={showHints}
+        />
       </View>
     </Pressable>
   );

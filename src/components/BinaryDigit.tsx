@@ -5,7 +5,7 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
 import BinaryDot from './BinaryDot';
 
@@ -46,6 +46,7 @@ const BinaryDigit: React.FC<BinaryDigitProps> = args => {
             showHints={props.showHints}
           />
         ))}
+        {props.showHints && <Text style={styles.hint}>{props.value}</Text>}
       </View>
     </View>
   );
@@ -61,6 +62,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: '2%',
     flex: 1,
+  },
+  hint: {
+    color: 'white',
+    fontSize: 20,
+    opacity: 0.25,
   },
 });
 

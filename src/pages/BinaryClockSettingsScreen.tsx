@@ -10,13 +10,18 @@ import {
   Button,
   SafeAreaView,
   StyleSheet,
+  Switch,
   Text,
   useWindowDimensions,
   View,
 } from 'react-native';
 import BinaryClock from '../components/BinaryClock';
 import Orientation from '../utils/orientation';
-import {useBrightness, BinaryClockSettings} from '../utils/BinaryClockSettings';
+import {
+  useBrightness,
+  BinaryClockSettings,
+  useShowHints,
+} from '../utils/BinaryClockSettings';
 import Toast from 'react-native-toast-message';
 
 const BinaryClockSettingScreen: React.FC = () => {
@@ -25,14 +30,17 @@ const BinaryClockSettingScreen: React.FC = () => {
     height > width ? Orientation.Landscape : Orientation.Portrait;
   const [brightness, setBrightness] = useBrightness();
   const brightnessString = `${Math.round(brightness * 100)}%`;
+  const [showHints, setShowHints] = useShowHints();
   function saveSettings() {
     console.debug('Saving settings');
-    BinaryClockSettings.setBrightness(brightness)
+    BinaryClockSettings.setPreferences({
+      brightness: brightness,
+      showHints: showHints,
+    })
       .then(() => {
         Toast.show({
           type: 'success',
           text1: 'Settings saved! 🎉',
-          text2: `Brightness: ${brightnessString}`,
         });
       })
       .catch(err => {
@@ -52,7 +60,11 @@ const BinaryClockSettingScreen: React.FC = () => {
           {flexDirection: height > width ? 'column' : 'row'},
         ]}>
         <View style={styles.clockPreview}>
-          <BinaryClock orientation={clockOrientation} brightness={brightness} />
+          <BinaryClock
+            orientation={clockOrientation}
+            brightness={brightness}
+            showHints={showHints}
+          />
         </View>
         <View style={styles.settingsContainer}>
           <Text style={styles.label}>Brightness</Text>
@@ -62,6 +74,9 @@ const BinaryClockSettingScreen: React.FC = () => {
             onValueChange={setBrightness}
             step={0.01}
           />
+          <Text style={styles.label}>Show Hints</Text>
+          <Text style={styles.description}>Show each dot's value.</Text>
+          <Switch onValueChange={setShowHints} value={showHints} />
           <Button title="Save" onPress={saveSettings} />
         </View>
       </View>
@@ -77,7 +92,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   settingsContainer: {
-    flex: 3,
+    flex: 2,
     margin: 20,
   },
   label: {
