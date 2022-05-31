@@ -4,14 +4,11 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import Slider from '@react-native-community/slider';
 import React from 'react';
 import {
   Button,
   SafeAreaView,
   StyleSheet,
-  Switch,
-  Text,
   useWindowDimensions,
   View,
 } from 'react-native';
@@ -23,6 +20,8 @@ import {
   useShowHints,
 } from '../utils/BinaryClockSettings';
 import Toast from 'react-native-toast-message';
+import SettingBoolean from '../components/settings/SettingBoolean';
+import SettingRange from '../components/settings/SettingRange';
 
 const BinaryClockSettingScreen: React.FC = () => {
   const {height, width} = useWindowDimensions();
@@ -67,16 +66,18 @@ const BinaryClockSettingScreen: React.FC = () => {
           />
         </View>
         <View style={styles.settingsContainer}>
-          <Text style={styles.label}>Brightness</Text>
-          <Text style={styles.description}>{brightnessString}</Text>
-          <Slider
-            value={brightness}
+          <SettingRange
+            title="Brightness"
+            initialValue={brightness}
             onValueChange={setBrightness}
-            step={0.01}
+            caption={brightnessString}
           />
-          <Text style={styles.label}>Show Hints</Text>
-          <Text style={styles.description}>Show each dot's value.</Text>
-          <Switch onValueChange={setShowHints} value={showHints} />
+          <SettingBoolean
+            title="Show Hints"
+            subtitle="Show each dot's value."
+            onValueChange={setShowHints}
+            initialValue={showHints}
+          />
           <Button title="Save" onPress={saveSettings} />
         </View>
       </View>
@@ -94,6 +95,7 @@ const styles = StyleSheet.create({
   settingsContainer: {
     flex: 2,
     margin: 20,
+    justifyContent: 'flex-start',
   },
   label: {
     fontSize: 20,
