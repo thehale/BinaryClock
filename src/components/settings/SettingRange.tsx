@@ -3,7 +3,7 @@
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
-import {Text} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
 import React from 'react';
 import SettingItem from './SettingItem';
 import Slider from '@react-native-community/slider';
@@ -32,7 +32,7 @@ const SettingRange = (props: Props) => {
     <SettingItem
       title={args.title}
       subtitle={args.subtitle}
-      right={<Text>{args.caption}</Text>}
+      right={<Text style={styles.caption}>{args.caption}</Text>}
       bottom={
         <Slider
           value={args.initialValue}
@@ -45,5 +45,11 @@ const SettingRange = (props: Props) => {
     />
   );
 };
+
+const styles = StyleSheet.create({
+  caption: {
+    color: 'black',
+  },
+});
 
 export default SettingRange;

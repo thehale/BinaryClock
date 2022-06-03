@@ -46,11 +46,13 @@ const styles = StyleSheet.create({
     flex: 3,
   },
   title: {
+    color: 'black',
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
   },
   subtitle: {
+    color: 'black',
     marginBottom: 10,
   },
   right: {
