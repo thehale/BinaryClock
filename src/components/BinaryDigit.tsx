@@ -1,55 +1,73 @@
-import React from "react";
-import { StyleSheet, View, useWindowDimensions, Text } from "react-native";
-import BinaryDot from "./BinaryDot";
+// Copyright (c) 2022 Joseph Hale
+//
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-const BinaryDigit: React.FC<{
+import React from 'react';
+import {StyleSheet, Text, View} from 'react-native';
+
+import BinaryDot from './BinaryDot';
+
+interface BinaryDigitProps {
   value: number;
-}> = ({ value }) => {
-  const { height, width } = useWindowDimensions();
-  if (height > width) {
-    return (
-      <View style={styles.pair}>
-        <View style={styles.digit}>
-          <BinaryDot active={(value & 32) > 0} value={32} />
-          <BinaryDot active={(value & 16) > 0} value={16} />
-          <BinaryDot active={(value & 8) > 0} value={8} />
-          <BinaryDot active={(value & 4) > 0} value={4} />
-          <BinaryDot active={(value & 2) > 0} value={2} />
-          <BinaryDot active={(value & 1) > 0} value={1} />
-        </View>
-      </View>
-    );
-  } else {
-    const firstDigit = Math.floor(value / 10);
-    const secondDigit = value % 10;
-    return (
-      <View style={styles.pair}>
-        <View style={styles.digit}>
-          <BinaryDot active={(firstDigit & 8) > 0} value={8} />
-          <BinaryDot active={(firstDigit & 4) > 0} value={4} />
-          <BinaryDot active={(firstDigit & 2) > 0} value={2} />
-          <BinaryDot active={(firstDigit & 1) > 0} value={1} />
-        </View>
-        <View style={styles.digit}>
-          <BinaryDot active={(secondDigit & 8) > 0} value={8} />
-          <BinaryDot active={(secondDigit & 4) > 0} value={4} />
-          <BinaryDot active={(secondDigit & 2) > 0} value={2} />
-          <BinaryDot active={(secondDigit & 1) > 0} value={1} />
-        </View>
-      </View>
-    );
-  }
+  brightness?: number;
+  maxVisible?: number;
+  maxValue?: number;
+  showHints?: boolean;
 }
+
+/* eslint no-bitwise: ["error", { "allow": ["&"] }] */
+const BinaryDigit: React.FC<BinaryDigitProps> = args => {
+  const defaults = {
+    brightness: 1,
+    maxVisible: 15,
+    maxValue: 15,
+    showHints: false,
+  };
+  const props = {...defaults, ...args};
+
+  let dotCount = 0;
+  if (props.maxValue > 0) {
+    dotCount = Math.floor(Math.log2(props.maxValue)) + 1;
+  }
+  let dotValues = Array.from(Array(dotCount), (_, i) => 2 ** i);
+
+  return (
+    <View style={styles.pair}>
+      <View style={styles.digit}>
+        {dotValues.reverse().map(value => (
+          <BinaryDot
+            key={value}
+            active={(props.value & value) > 0}
+            visible={props.maxVisible >= value}
+            value={value}
+            brightness={props.brightness}
+            showHints={props.showHints}
+          />
+        ))}
+        {props.showHints && <Text style={styles.hint}>{props.value}</Text>}
+      </View>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   digit: {
-    flexDirection: "column",
+    alignItems: 'center',
+    flex: 1,
   },
   pair: {
-    flexDirection: "row",
-    padding: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: '2%',
+    flex: 1,
+  },
+  hint: {
+    color: 'white',
+    fontSize: 20,
+    opacity: 0.25,
   },
 });
 
 export default BinaryDigit;
-
