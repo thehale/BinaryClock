@@ -20,7 +20,7 @@ interface BinaryDigitProps {
 /* eslint no-bitwise: ["error", { "allow": ["&"] }] */
 const BinaryDigit: React.FC<BinaryDigitProps> = args => {
   const defaults = {
-    brightness: 0.5,
+    brightness: 1,
     maxVisible: 15,
     maxValue: 15,
     showHints: false,

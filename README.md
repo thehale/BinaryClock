@@ -17,6 +17,19 @@ system time at regular intervals and convert the hours, minutes, and
 seconds values to binary digits which are used to brighten or dim
 corresponding squares on the screen.
 
+## Built-in Customization Options!
+![A gif showing the settings menu of the Binary Clock](./docs/binary_clock_settings_demo.gif)
+
+The Binary Clock has a built-in settings page where you can configure the brightness of the clock and enable hints!
+
+More settings are planned for the future (e.g. [choosing the clock's
+color](https://github.com/jhale1805/BinaryClock/issues/3)). Feel free
+to [open a feature
+request](https://github.com/jhale1805/BinaryClock/issues/new/choose)
+with any ideas you may have!
+
+## Contributing
+See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## License
 

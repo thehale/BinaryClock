@@ -30,7 +30,7 @@ class BinaryClockSettings {
   public static async getBrightness() {
     let temp = await DefaultPreference.get(BRIGHTNESS_KEY);
     if (temp === undefined || temp === null) {
-      temp = '0.5';
+      temp = '1';
     }
     return Number(temp);
   }
@@ -53,17 +53,19 @@ class BinaryClockSettings {
 }
 
 function useBrightness(): [number, Dispatch<SetStateAction<number>>] {
-  const [brightness, setBrightness] = useState(0.5);
+  const [brightness, setBrightness] = useState(1);
   const isFocused = useIsFocused();
   useEffect(() => {
     BinaryClockSettings.getBrightness()
       .then(value => {
-        console.debug('Brightness Setting: ' + value);
-        setBrightness(value);
+        setTimeout(() => {
+          console.debug('Brightness Setting: ' + value);
+          setBrightness(value);
+        }, 0);
       })
       .catch(err => {
         console.error(err);
-        setBrightness(0.5);
+        setBrightness(1);
       });
   }, [isFocused]);
   return [brightness, setBrightness];

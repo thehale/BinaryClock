@@ -48,10 +48,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'green',
   },
   activeDot: {
-    opacity: 0.5,
+    opacity: 1,
   },
   inactiveDot: {
-    opacity: 0.125,
+    opacity: 0.25,
   },
   hint: {
     alignItems: 'center',

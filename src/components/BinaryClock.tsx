@@ -19,7 +19,7 @@ interface BinaryClockProps {
 const BinaryClock: React.FC<BinaryClockProps> = args => {
   const defaults = {
     orientation: Orientation.Landscape,
-    brightness: 0.5,
+    brightness: 1,
     showHints: false,
   };
   const props = {...defaults, ...args};
