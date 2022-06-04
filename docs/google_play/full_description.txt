@@ -1,0 +1,13 @@
+// Copyright (c) 2022 Joseph Hale
+// 
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Show off your inner genius with this unique way of telling time!
+
+Instead of the digits 1, 2, 3, etc... this clock uses columns of dots that turn on and off like the 1s and 0s of the binary form of the number.
+
+Binary Clock also includes several settings you can use to personalize the clock to your liking. Just press and hold the clock to access them.
+
+Binary Clock is open-source! Check out the code yourself on GitHub: https://github.com/jhale1805/BinaryClock

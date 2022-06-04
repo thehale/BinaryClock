@@ -60,3 +60,24 @@ Finally push up your changes to your fork and open a Pull Request (PR) back into
   comment section.
 - After everything looks great, your PR will be merged into the `main` branch of
   `BinaryClock`!
+
+## Other Notes
+
+### Creating a Release Build
+
+#### Google Play Store
+1. Open `android/gradle.properties` and update the `BINARY_CLOCK` variables with the corresponding values stored in our password manager.
+    - These variables MUST be reset before committing to prevent leakage of secrets.
+2. Make sure the `keystore` file is copied from the password manager to `android/app`
+3. Run the following commands to create the release build.
+```
+cd android
+./gradlew bundleRelease
+```
+4. Create a new release in the Google Play Console and upload the `android/app/build/outputs/bundle/release/app-release.aab`.
+
+#### Apple App Store
+Binary Clock is not yet on the Apple App Store due to the cost of the Apple
+Developer Program ($100 annually). If you want to help Binary Clock become
+available on iOS, consider [sponsoring](https://github.com/sponsors/jhale1805)
+this project to help cover those costs.
