@@ -1,4 +1,4 @@
-package com.binaryclock;
+package dev.jhale.binaryclock;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

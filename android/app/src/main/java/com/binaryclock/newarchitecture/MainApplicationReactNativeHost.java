@@ -1,4 +1,4 @@
-package com.binaryclock.newarchitecture;
+package dev.jhale.binaryclock.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.binaryclock.BuildConfig;
-import com.binaryclock.newarchitecture.components.MainComponentsRegistry;
-import com.binaryclock.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import dev.jhale.binaryclock.BuildConfig;
+import dev.jhale.binaryclock.newarchitecture.components.MainComponentsRegistry;
+import dev.jhale.binaryclock.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 
