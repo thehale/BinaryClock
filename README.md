@@ -5,7 +5,6 @@ A nerdy way to tell time on Android/iOS 🕓
 ![A gif showing the Binary Clock running on both an Android and iOS
 simulator](./docs/binary_clock_demo.gif)
 
-
 ## How it works
 
 The Binary Clock is written in [React Native](https://reactnative.dev)
@@ -18,17 +17,19 @@ seconds values to binary digits which are used to brighten or dim
 corresponding squares on the screen.
 
 ## Built-in Customization Options!
+
 ![A gif showing the settings menu of the Binary Clock](./docs/binary_clock_settings_demo.gif)
 
 The Binary Clock has a built-in settings page where you can configure the brightness of the clock and enable hints!
 
 More settings are planned for the future (e.g. [choosing the clock's
-color](https://github.com/jhale1805/BinaryClock/issues/3)). Feel free
+color](https://github.com/thehale/BinaryClock/issues/3)). Feel free
 to [open a feature
-request](https://github.com/jhale1805/BinaryClock/issues/new/choose)
+request](https://github.com/thehale/BinaryClock/issues/new/choose)
 with any ideas you may have!
 
 ## Contributing
+
 See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## License
@@ -38,7 +39,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md)
 Public License, v 2.0, which are available at https://mozilla.org/MPL/2.0/.
 
 You can download the source code for `BinaryClock` for free from
-https://github.com/jhale1805/BinaryClock.
+https://github.com/thehale/BinaryClock.
 ```
 
 ### TL;DR

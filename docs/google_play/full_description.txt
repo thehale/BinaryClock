@@ -10,4 +10,4 @@ Instead of the digits 1, 2, 3, etc... this clock uses columns of dots that turn 
 
 Binary Clock also includes several settings you can use to personalize the clock to your liking. Just press and hold the clock to access them.
 
-Binary Clock is open-source! Check out the code yourself on GitHub: https://github.com/jhale1805/BinaryClock
+Binary Clock is open-source! Check out the code yourself on GitHub: https://github.com/thehale/BinaryClock
