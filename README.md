@@ -2,6 +2,11 @@
 
 A nerdy way to tell time on Android/iOS 🕓
 
+<!-- BADGES -->
+[![](https://badgen.net/github/license/thehale/BinaryClock)](https://github.com/thehale/BinaryClock/blob/master/LICENSE)
+[![](https://badgen.net/badge/icon/Sponsor/pink?icon=github&label)](https://github.com/sponsors/thehale)
+[![](https://badgen.net/badge/icon/Follow%20@jhaledev/1DA1F2?icon=twitter&label)](https://twitter.com/intent/user?screen_name=jhaledev)
+
 ![A gif showing the Binary Clock running on both an Android and iOS
 simulator](./docs/binary_clock_demo.gif)
 
