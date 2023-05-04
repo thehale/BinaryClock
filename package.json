@@ -15,6 +15,7 @@
     "android-menu": "adb shell input keyevent 82",
     "check-dependencies": "rnx-align-deps",
     "fix-dependencies": "rnx-align-deps --write",
+    "deduplicate-dependencies": "yarn-deduplicate yarn.lock",
     "pods": "cd ios && pod install && cd .."
   },
   "dependencies": {
@@ -50,7 +51,8 @@
     "metro-react-native-babel-preset": "^0.67.0",
     "react-native-svg-app-icon": "^0.6.1",
     "react-test-renderer": "17.0.2",
-    "typescript": "^4.4.4"
+    "typescript": "^4.4.4",
+    "yarn-deduplicate": "^6.0.1"
   },
   "resolutions": {
     "@types/react": "^17"
