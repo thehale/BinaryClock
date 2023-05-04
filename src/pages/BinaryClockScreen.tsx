@@ -4,13 +4,13 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+import {Pressable, StatusBar, View, useWindowDimensions} from 'react-native';
 import React, {useEffect} from 'react';
-import {View, StatusBar, Pressable, useWindowDimensions} from 'react-native';
-import KeepAwake from 'react-native-keep-awake';
+import {useBrightness, useShowHints} from '../utils/BinaryClockSettings';
 
 import BinaryClock from '../components/BinaryClock';
+import KeepAwake from 'react-native-keep-awake';
 import Orientation from '../utils/orientation';
-import {useBrightness, useShowHints} from '../utils/BinaryClockSettings';
 import Toast from 'react-native-toast-message';
 
 const BinaryClockScreen: React.FC<{
@@ -34,6 +34,7 @@ const BinaryClockScreen: React.FC<{
       onLongPress={() => navigation.navigate('BinaryClockSettingsScreen')}>
       <View>
         <StatusBar hidden={true} />
+        {/* @ts-ignore */}
         <KeepAwake />
         <BinaryClock
           orientation={orientation}

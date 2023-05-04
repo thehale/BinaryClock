@@ -1,12 +1,15 @@
 {
-  "cSpell.words": ["Pressable"],
-  "licenser.author": "Joseph Hale",
-  "licenser.license": "MPLv2",
-  "licenser.projectName": "Binary Clock",
-  "[typescript]": {
-    "editor.tabSize": 2
-  },
-  "[typescriptreact]": {
-    "editor.tabSize": 2
-  }
+    "cSpell.words": [
+        "Pressable"
+    ],
+    "licenser.author": "Joseph Hale",
+    "licenser.license": "MPLv2",
+    "licenser.projectName": "Binary Clock",
+    "[typescript]": {
+        "editor.tabSize": 2
+    },
+    "[typescriptreact]": {
+        "editor.tabSize": 2
+    },
+    "java.compile.nullAnalysis.mode": "automatic"
 }
