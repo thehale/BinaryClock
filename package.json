@@ -27,6 +27,7 @@
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@rnx-kit/align-deps": "^2.2.2",
     "@types/jest": "^26.0.23",
     "@types/react-native": "^0.67.3",
     "@types/react-native-keep-awake": "^2.0.3",
@@ -54,5 +55,25 @@
       "json",
       "node"
     ]
+  },
+  "rnx-kit": {
+    "kitType": "app",
+    "alignDeps": {
+      "requirements": [
+        "react-native@0.68"
+      ],
+      "capabilities": [
+        "babel-preset-react-native",
+        "core",
+        "core-android",
+        "core-ios",
+        "jest",
+        "navigation/native",
+        "react",
+        "react-test-renderer",
+        "safe-area",
+        "screens"
+      ]
+    }
   }
 }
