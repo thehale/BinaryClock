@@ -5,7 +5,10 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start",
+    "bundle": "yarn bundle:ios && yarn bundle:android",
+    "bundle:ios": "react-native rnx-bundle --platform ios",
+    "bundle:android": "react-native rnx-bundle --platform android",
+    "start": "react-native rnx-start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "icons": "react-native-svg-app-icon",
@@ -31,6 +34,10 @@
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
     "@rnx-kit/align-deps": "^2.2.2",
+    "@rnx-kit/babel-preset-metro-react-native": "^1.1.4",
+    "@rnx-kit/cli": "^0.16.8",
+    "@rnx-kit/metro-config": "^1.3.6",
+    "@rnx-kit/metro-resolver-symlinks": "^0.1.28",
     "@types/jest": "^26.0.23",
     "@types/react-native": "^0.67.3",
     "@types/react-native-keep-awake": "^2.0.3",
@@ -61,6 +68,22 @@
   },
   "rnx-kit": {
     "kitType": "app",
+    "bundle": {
+      "treeShake": true,
+      "plugins": [
+        "@rnx-kit/metro-plugin-cyclic-dependencies-detector",
+        [
+          "@rnx-kit/metro-plugin-duplicates-checker",
+          {
+            "ignoredModules": [
+              "react-is",
+              "@react-native/normalize-color"
+            ]
+          }
+        ],
+        "@rnx-kit/metro-plugin-typescript"
+      ]
+    },
     "alignDeps": {
       "requirements": [
         "react-native@0.68"
