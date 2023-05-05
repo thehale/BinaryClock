@@ -25,6 +25,8 @@ DerivedData
 *.ipa
 *.xcuserstate
 ios/.xcode.env.local
+# iOS API Keys
+*.p8
 
 # Android/IntelliJ
 #
