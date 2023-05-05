@@ -25,6 +25,8 @@ Start by following the [React Native CLI
 Quickstart](https://reactnative.dev/docs/environment-setup) from the official
 docs.
 
+Then install `fastlane`: https://fastlane.tools/
+
 Then fork and clone this repository to your machine.
 
 From there you can start experimenting with making any changes you like!

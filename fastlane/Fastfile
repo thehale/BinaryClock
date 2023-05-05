@@ -1,0 +1,47 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+desc "Make sure to copy the `.env.dist` to `.env` and fill all values before running any lanes"
+
+platform :ios do
+  
+  desc 'Fetch certificates and provisioning profiles'
+  lane :certificates do
+    match(type: 'development')
+    match(type: 'appstore')
+  end
+
+  desc 'Build the iOS application.'
+  lane :build do
+    certificates
+    increment_build_number(xcodeproj: "ios/BinaryClock.xcodeproj")
+    gym
+  end
+
+  desc "Publish a beta release to the App Store"
+  lane :beta do
+    # increment_build_number
+    build_app(workspace: "BinaryClock.xcworkspace", scheme: "BinaryClock")
+    # upload_to_testflight
+  end
+
+  desc "Description of what the lane does"
+  lane :custom_lane do
+    # add actions here: https://docs.fastlane.tools/actions
+  end
+
+end
