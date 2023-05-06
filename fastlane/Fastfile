@@ -43,9 +43,14 @@ platform :ios do
     pilot
   end
 
-  desc "Description of what the lane does"
-  lane :custom_lane do
-    # add actions here: https://docs.fastlane.tools/actions
+end
+
+platform :android do
+
+  desc "Build the Android application."
+  lane :build do
+    gradle(task: 'clean', project_dir: 'android/')
+    gradle(task: 'assemble', build_type: 'Release', project_dir: 'android/')
   end
 
 end

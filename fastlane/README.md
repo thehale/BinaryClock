@@ -41,13 +41,18 @@ Build the iOS application.
 
 Publish a beta release to the App Store
 
-### ios custom_lane
+----
+
+
+## Android
+
+### android build
 
 ```sh
-[bundle exec] fastlane ios custom_lane
+[bundle exec] fastlane android build
 ```
 
-Description of what the lane does
+Build the Android application.
 
 ----
 
