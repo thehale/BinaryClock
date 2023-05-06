@@ -1,0 +1,9 @@
+Instead of the digits 1, 2, 3, etc... this clock uses columns of dots that turn on and off like the 1s and 0s of the binary form of the number.
+
+Binary Clock also includes several settings you can use to personalize the clock to your liking. Just press and hold the clock to access them.
+
+If you don't know how to tell time on a Binary Clock, check out the instructions in the blog post announcing the app: https://links.jhale.dev/binaryclock
+
+Binary Clock is open-source! Check out the code yourself on GitHub: https://github.com/thehale/BinaryClock
+
+DISCLAIMER: All marketing pictures in this app store listing are designed to complement the nerdy theme of this app. The presence of various books in some marketing pictures in this app store listing does not imply an endorsement of this app by the authors of those publications. Those authors retain copyright and trademark rights to their works.

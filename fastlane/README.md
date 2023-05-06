@@ -54,6 +54,38 @@ Publish a beta release to the App Store
 
 Build the Android application.
 
+### android internal
+
+```sh
+[bundle exec] fastlane android internal
+```
+
+Publish an internal release to the Play Store
+
+### android alpha
+
+```sh
+[bundle exec] fastlane android alpha
+```
+
+Publish a alpha release to the Play Store
+
+### android beta
+
+```sh
+[bundle exec] fastlane android beta
+```
+
+Publish a beta release to the Play Store
+
+### android production
+
+```sh
+[bundle exec] fastlane android production
+```
+
+Publish a production release to the Play Store
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.

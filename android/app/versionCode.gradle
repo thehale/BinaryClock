@@ -1,4 +1,5 @@
-// From: https://gist.github.com/carloscuesta/678668da906bb80bdd22c8fd690c4fc4
+// Adapted from:
+// https://gist.github.com/carloscuesta/678668da906bb80bdd22c8fd690c4fc4
 
 task('incrementVersionCode') {
     description "Increments Version Code"
@@ -11,7 +12,7 @@ task('incrementVersionCode') {
 }
 
 tasks.whenTaskAdded { task ->
-    if (task.name == 'assembleRelease') {
+    if (task.name == 'bundleRelease') {
         task.dependsOn 'incrementVersionCode'
     }
 }

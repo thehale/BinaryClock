@@ -50,7 +50,31 @@ platform :android do
   desc "Build the Android application."
   lane :build do
     gradle(task: 'clean', project_dir: 'android/')
-    gradle(task: 'assemble', build_type: 'Release', project_dir: 'android/')
+    gradle(task: 'bundle', build_type: 'Release', project_dir: 'android/')
+  end
+
+  desc "Publish an internal release to the Play Store"
+  lane :internal do
+    build
+    supply(track: 'internal', track_promote_to: 'internal')
+  end
+
+  desc "Publish a alpha release to the Play Store"
+  lane :alpha do
+    build
+    supply(track: 'alpha', track_promote_to: 'alpha')
+  end
+
+  desc "Publish a beta release to the Play Store"
+  lane :beta do
+    build
+    supply(track: 'beta', track_promote_to: 'beta')
+  end
+
+  desc "Publish a production release to the Play Store"
+  lane :production do
+    build
+    supply(track: 'production', track_promote_to: 'production')
   end
 
 end
