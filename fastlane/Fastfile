@@ -36,9 +36,9 @@ platform :ios do
   lane :beta do
     build
     app_store_connect_api_key(
-      key_id: ENV["APP_STORE_CONNECT_KEY_ID"],
-      issuer_id: ENV["APP_STORE_CONNECT_ISSUER_ID"],
-      key_filepath: ENV["APP_STORE_CONNECT_KEY_FILEPATH"],
+      key_id: ENV["IOS_APP_STORE_CONNECT_KEY_ID"],
+      issuer_id: ENV["IOS_APP_STORE_CONNECT_ISSUER_ID"],
+      key_filepath: ENV["IOS_APP_STORE_CONNECT_KEY_FILEPATH"],
     )
     pilot
   end

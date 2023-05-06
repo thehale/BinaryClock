@@ -119,11 +119,11 @@ android {
             keyPassword 'android'
         }
         release {
-            if (System.getenv("BINARY_CLOCK_UPLOAD_STORE_FILE").length() > 0) {
-                storeFile file(System.getenv("BINARY_CLOCK_UPLOAD_STORE_FILE"))
-                storePassword System.getenv("BINARY_CLOCK_UPLOAD_STORE_PASSWORD")
-                keyAlias System.getenv("BINARY_CLOCK_UPLOAD_KEY_ALIAS")
-                keyPassword System.getenv("BINARY_CLOCK_UPLOAD_KEY_PASSWORD")
+            if (System.getenv("ANDROID_RELEASE_KEYSTORE_FILE_PATH").length() > 0) {
+                storeFile file(System.getenv("ANDROID_RELEASE_KEYSTORE_FILE_PATH"))
+                storePassword System.getenv("ANDROID_RELEASE_KEYSTORE_PASSWORD")
+                keyAlias System.getenv("ANDROID_RELEASE_KEY_ALIAS")
+                keyPassword System.getenv("ANDROID_RELEASE_KEY_PASSWORD")
             }
         }
     }

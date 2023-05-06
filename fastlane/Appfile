@@ -1,12 +1,12 @@
 # iOS
 app_identifier("dev.jhale.BinaryClock") # The bundle identifier of your app
-apple_id(ENV["BINARY_CLOCK_APPLE_ID"]) # Your Apple Developer Portal username
+apple_id(ENV["IOS_APPLE_ID"]) # Your Apple Developer Portal username
 
-itc_team_id(ENV["BINARY_CLOCK_ITC_TEAM_ID"]) # App Store Connect Team ID
-team_id(ENV["BINARY_CLOCK_TEAM_ID"]) # Developer Portal Team ID
+itc_team_id(ENV["IOS_ITC_TEAM_ID"]) # App Store Connect Team ID
+team_id(ENV["IOS_TEAM_ID"]) # Developer Portal Team ID
 
 # Android
-json_key_file(ENV["JSON_KEY_FILE_PATH"]) # Google Play Console Credentials
+json_key_file(ENV["ANDROID_GOOGLE_PLAY_JSON_KEY_FILE_PATH"]) # Google Play Console Credentials
 package_name("dev.jhale.binaryclock") # Google Play App Identifier
 
 # For more information about the Appfile, see:

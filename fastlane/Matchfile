@@ -1,4 +1,4 @@
-git_url(ENV['BINARY_CLOCK_CERTIFICATE_REPOSITORY_URL'])
+git_url(ENV['IOS_CERTIFICATE_REPOSITORY_URL'])
 
 storage_mode("git")
 
