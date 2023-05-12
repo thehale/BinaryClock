@@ -6,7 +6,9 @@ type("development") # The default type, can be: appstore, adhoc, enterprise or d
 
 app_identifier("dev.jhale.BinaryClock") # The bundle identifier of your app
 
-readonly(true) # Marks all files as read only after download
+# readonly(true) # Marks all files as read only after download
+
+keychain_password(ENV['MATCH_PASSWORD'])
 
 # username("user@fastlane.tools") # Your Apple Developer Portal username
 

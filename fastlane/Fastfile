@@ -21,13 +21,13 @@ platform :ios do
   
   desc 'Fetch certificates and provisioning profiles'
   lane :certificates do
-    match(type: 'development')
-    match(type: 'appstore')
+    match(type: 'development', keychain_password: ENV['MATCH_PASSWORD'])
+    match(type: 'appstore', keychain_password: ENV['MATCH_PASSWORD'])
   end
 
   desc 'Build the iOS application.'
   lane :build do
-    certificates
+    # certificates
     increment_build_number(xcodeproj: "ios/BinaryClock.xcodeproj")
     gym
   end
@@ -38,7 +38,7 @@ platform :ios do
     app_store_connect_api_key(
       key_id: ENV["IOS_APP_STORE_CONNECT_KEY_ID"],
       issuer_id: ENV["IOS_APP_STORE_CONNECT_ISSUER_ID"],
-      key_filepath: ENV["IOS_APP_STORE_CONNECT_KEY_FILEPATH"],
+      key_filepath: ENV["IOS_APP_STORE_CONNECT_KEY_FILE_PATH"],
     )
     pilot
   end
