@@ -4,10 +4,10 @@
 <svg
    width="108px"
    height="108px"
-   viewBox="0 0 28.575001 28.575001"
+   viewBox="0 0 28.575003 28.575003"
    version="1.1"
    id="svg5"
-   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
    sodipodi:docname="icon.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -23,15 +23,17 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="5.8725026"
-     inkscape:cx="54.916962"
-     inkscape:cy="60.195801"
+     inkscape:zoom="2.9362513"
+     inkscape:cx="-49.55298"
+     inkscape:cy="76.287749"
      inkscape:window-width="1920"
      inkscape:window-height="1009"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:window-x="892"
+     inkscape:window-y="1072"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer1"
+     inkscape:showpageshadow="0"
+     inkscape:deskcolor="#505050" />
   <defs
      id="defs2" />
   <g
@@ -45,30 +47,37 @@
        width="28.575001"
        height="28.575001"
        x="32.648796"
-       y="37.646057" />
-    <circle
-       style="fill:#008000;stroke:#ffffff;stroke-width:2.64583;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0;paint-order:markers stroke fill;fill-opacity:0.25"
-       id="path1404"
-       cx="43.52121"
-       cy="48.518471"
-       r="2.5734487" />
-    <circle
-       style="fill:#008000;stroke:#ffffff;stroke-width:2.64583;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0;paint-order:markers stroke fill"
-       id="circle1863"
-       cx="50.351379"
-       cy="48.518471"
-       r="2.5734487" />
-    <circle
-       style="fill:#008000;stroke:#ffffff;stroke-width:2.64583;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0;paint-order:markers stroke fill"
-       id="circle1867"
-       cx="43.52121"
-       cy="55.34864"
-       r="2.5734487" />
-    <circle
-       style="fill:#008000;stroke:#ffffff;stroke-width:2.64583;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0;paint-order:markers stroke fill"
-       id="circle1869"
-       cx="50.351379"
-       cy="55.34864"
-       r="2.5734487" />
+       y="37.646057"
+       inkscape:export-filename="splash.png"
+       inkscape:export-xdpi="1777.7778"
+       inkscape:export-ydpi="1777.7778" />
+    <g
+       id="g2575"
+       transform="matrix(0.054,0,0,0.054,30.885761,35.61317)">
+      <circle
+         style="fill:#00ff00;fill-opacity:0.25;stroke:#ffffff;stroke-width:48.9944;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0;paint-order:markers stroke fill"
+         id="path1404"
+         cx="233.97972"
+         cy="238.97697"
+         r="47.654072" />
+      <circle
+         style="fill:#00ff00;fill-opacity:1;stroke:#ffffff;stroke-width:48.9944;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0;paint-order:markers stroke fill"
+         id="circle1863"
+         cx="360.45801"
+         cy="238.97697"
+         r="47.654072" />
+      <circle
+         style="fill:#00ff00;fill-opacity:1;stroke:#ffffff;stroke-width:48.9944;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0;paint-order:markers stroke fill"
+         id="circle1867"
+         cx="233.97972"
+         cy="365.45526"
+         r="47.654072" />
+      <circle
+         style="fill:#00ff00;fill-opacity:1;stroke:#ffffff;stroke-width:48.9944;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0;paint-order:markers stroke fill"
+         id="circle1869"
+         cx="360.45801"
+         cy="365.45526"
+         r="47.654072" />
+    </g>
   </g>
 </svg>
