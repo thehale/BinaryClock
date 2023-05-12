@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "env": "dotenv -e ./fastlane/.env",
+    "unlock-keychain": "yarn env security unlock-keychain -p $KEYCHAIN_PASSWORD $HOME/Library/Keychains/login.keychain-db",
     "android": "yarn env react-native run-android",
     "android:release": "yarn env react-native run-android --mode=release",
-    "ios": "yarn env react-native run-ios",
-    "ios:release": "yarn env react-native run-ios --mode Release",
+    "ios": "yarn unlock-keychain && yarn env react-native run-ios",
+    "ios:release": "yarn unlock-keychain && yarn env react-native run-ios --mode Release",
     "bundle": "yarn env yarn bundle:ios && yarn bundle:android",
     "bundle:ios": "yarn env react-native rnx-bundle --platform ios",
     "bundle:android": "yarn env react-native rnx-bundle --platform android",
