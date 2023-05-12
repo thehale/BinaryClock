@@ -9,6 +9,7 @@
 scheme("BinaryClock")
 workspace("ios/BinaryClock.xcworkspace")
 clean(true)
+export_method("app-store")
 
 # sdk("iphoneos9.0")
 
