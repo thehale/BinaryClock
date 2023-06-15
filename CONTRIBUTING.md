@@ -29,6 +29,8 @@ Then install `fastlane`: https://fastlane.tools/
 
 Then fork and clone this repository to your machine.
 
+Then copy `fastlane/.env.dist` to `fastlane/.env`
+
 From there you can start experimenting with making any changes you like!
 
 ## Directory Structure
@@ -71,23 +73,7 @@ Finally push up your changes to your fork and open a Pull Request (PR) back into
 
 ### Creating a Release Build
 
-#### Google Play Store
+Fill out all the credentials in `fastlane/.env` (make a copy of `fastlane/.env.dist`
+if it doesn't exist yet).
 
-1. Open `android/gradle.properties` and update the `BINARY_CLOCK` variables with the corresponding values stored in our password manager.
-   - These variables MUST be reset before committing to prevent leakage of secrets.
-2. Make sure the `keystore` file is copied from the password manager to `android/app`
-3. Run the following commands to create the release build.
-
-```
-cd android
-./gradlew bundleRelease
-```
-
-4. Create a new release in the Google Play Console and upload the `android/app/build/outputs/bundle/release/app-release.aab`.
-
-#### Apple App Store
-
-Binary Clock is not yet on the Apple App Store due to the cost of the Apple
-Developer Program ($100 annually). If you want to help Binary Clock become
-available on iOS, consider [sponsoring](https://github.com/sponsors/thehale)
-this project to help cover those costs.
+Then see [`fastlane/README.md`](fastlane/README.md) for the commands.
