@@ -7,4 +7,4 @@ gem 'cocoapods', '>= 1.12.1'
 
 # Constraints imposed in response to Dependabot security warnings.
 gem "cocoapods-downloader", ">= 1.6.3"
-gem "activesupport", ">= 6.1.7.3"
+gem "activesupport", ">= 6.1.7.5"
