@@ -40,6 +40,12 @@ platform :ios do
     )
 
     gym
+
+    echo(message: "----------------------------------------------------------")
+    echo(message: "HELP: If the build FAILED, make sure to...")
+    echo(message: "  (1) run `fastlane ios certificates`, AND")
+    echo(message: "  (2) unlock the keychain with `security unlock-keychain`.")
+    echo(message: "----------------------------------------------------------")
   end
 
   desc "Publish a beta release to the App Store"
