@@ -28,7 +28,17 @@ platform :ios do
   desc 'Build the iOS application.'
   lane :build do
     # certificates
-    increment_build_number(xcodeproj: "ios/BinaryClock.xcodeproj")
+
+    require "json"
+    package_json = JSON.parse(File.read("../package.json"))
+    increment_version_number_in_xcodeproj(
+      version_number: package_json["version"],
+      xcodeproj: "ios/BinaryClock.xcodeproj"
+    )
+    increment_build_number_in_xcodeproj(
+      xcodeproj: "ios/BinaryClock.xcodeproj"
+    )
+
     gym
   end
 
