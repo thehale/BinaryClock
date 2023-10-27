@@ -4,24 +4,26 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import React from 'react';
+import {
+  BinaryClockSettings,
+  useBrightness,
+  useRoundness,
+  useShowHints,
+} from '../utils/BinaryClockSettings';
 import {
   Button,
   SafeAreaView,
   StyleSheet,
-  useWindowDimensions,
   View,
+  useWindowDimensions,
 } from 'react-native';
+
 import BinaryClock from '../components/BinaryClock';
 import Orientation from '../utils/orientation';
-import {
-  useBrightness,
-  BinaryClockSettings,
-  useShowHints,
-} from '../utils/BinaryClockSettings';
-import Toast from 'react-native-toast-message';
+import React from 'react';
 import SettingBoolean from '../components/settings/SettingBoolean';
 import SettingRange from '../components/settings/SettingRange';
+import Toast from 'react-native-toast-message';
 
 const BinaryClockSettingScreen: React.FC = () => {
   const {height, width} = useWindowDimensions();
@@ -29,11 +31,14 @@ const BinaryClockSettingScreen: React.FC = () => {
     height > width ? Orientation.Landscape : Orientation.Portrait;
   const [brightness, setBrightness] = useBrightness();
   const brightnessString = `${Math.round(brightness * 100)}%`;
+  const [roundness, setRoundness] = useRoundness();
+  const roundnessString = `${Math.round(roundness * 100)}%`;
   const [showHints, setShowHints] = useShowHints();
   function saveSettings() {
     console.debug('Saving settings');
     BinaryClockSettings.setPreferences({
       brightness: brightness,
+      roundness: roundness,
       showHints: showHints,
     })
       .then(() => {
@@ -62,6 +67,7 @@ const BinaryClockSettingScreen: React.FC = () => {
           <BinaryClock
             orientation={clockOrientation}
             brightness={brightness}
+            roundness={roundness}
             showHints={showHints}
           />
         </View>
@@ -71,6 +77,12 @@ const BinaryClockSettingScreen: React.FC = () => {
             initialValue={brightness}
             onValueChange={setBrightness}
             caption={brightnessString}
+          />
+          <SettingRange
+            title="Roundness"
+            initialValue={roundness}
+            onValueChange={setRoundness}
+            caption={roundnessString}
           />
           <SettingBoolean
             title="Show Hints"

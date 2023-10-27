@@ -13,16 +13,19 @@ import Orientation from '../utils/orientation';
 interface BinaryClockProps {
   orientation?: Orientation;
   brightness?: number;
+  roundness?: number;
   showHints?: boolean;
 }
 
+const DEFAULTS = {
+  orientation: Orientation.Landscape,
+  brightness: 1,
+  roundness: 1,
+  showHints: false,
+};
+
 const BinaryClock: React.FC<BinaryClockProps> = args => {
-  const defaults = {
-    orientation: Orientation.Landscape,
-    brightness: 1,
-    showHints: false,
-  };
-  const props = {...defaults, ...args};
+  const props = {...DEFAULTS, ...args};
 
   const [time, setTime] = useState(new Date());
   useEffect(() => {
@@ -66,6 +69,7 @@ const BinaryClock: React.FC<BinaryClockProps> = args => {
           maxVisible={digit.maxVisible}
           maxValue={maxValue}
           brightness={props.brightness}
+          roundness={props.roundness}
           showHints={props.showHints}
         />
       ))}

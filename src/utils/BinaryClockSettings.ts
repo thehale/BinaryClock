@@ -4,27 +4,32 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import {useIsFocused} from '@react-navigation/native';
 import {Dispatch, SetStateAction, useEffect, useState} from 'react';
+
 import DefaultPreference from 'react-native-default-preference';
+import {useIsFocused} from '@react-navigation/native';
 
 const BRIGHTNESS_KEY = 'brightness';
+const ROUNDNESS_KEY = 'roundness';
 const SHOW_HINTS_KEY = 'showHints';
 
 class BinaryClockSettings {
   public static async getPreferences() {
     return {
       brightness: await this.getBrightness(),
+      roundness: await this.getRoundness(),
       showHints: await this.getShowHints(),
     };
   }
 
   public static async setPreferences(preferences: {
     brightness: number;
+    roundness: number;
     showHints: boolean;
   }) {
     await this.setBrightness(preferences.brightness);
     await this.setShowHints(preferences.showHints);
+    await this.setRoundness(preferences.roundness);
   }
 
   public static async getBrightness() {
@@ -37,6 +42,18 @@ class BinaryClockSettings {
 
   public static async setBrightness(brightness: number) {
     await DefaultPreference.set(BRIGHTNESS_KEY, brightness.toString());
+  }
+
+  public static async getRoundness() {
+    let temp = await DefaultPreference.get(ROUNDNESS_KEY);
+    if (temp === undefined || temp === null) {
+      temp = '1';
+    }
+    return Number(temp);
+  }
+
+  public static async setRoundness(roundness: number) {
+    await DefaultPreference.set(ROUNDNESS_KEY, roundness.toString());
   }
 
   public static async getShowHints() {
@@ -71,6 +88,25 @@ function useBrightness(): [number, Dispatch<SetStateAction<number>>] {
   return [brightness, setBrightness];
 }
 
+function useRoundness(): [number, Dispatch<SetStateAction<number>>] {
+  const [roundness, setRoundness] = useState(1);
+  const isFocused = useIsFocused();
+  useEffect(() => {
+    BinaryClockSettings.getRoundness()
+      .then(value => {
+        setTimeout(() => {
+          console.debug('Roundness Setting: ' + value);
+          setRoundness(value);
+        }, 0);
+      })
+      .catch(err => {
+        console.error(err);
+        setRoundness(1);
+      });
+  }, [isFocused]);
+  return [roundness, setRoundness];
+}
+
 function useShowHints(): [boolean, Dispatch<SetStateAction<boolean>>] {
   const [showHints, setShowHints] = useState(false);
   const isFocused = useIsFocused();
@@ -88,4 +124,4 @@ function useShowHints(): [boolean, Dispatch<SetStateAction<boolean>>] {
   return [showHints, setShowHints];
 }
 
-export {useBrightness, useShowHints, BinaryClockSettings};
+export {useBrightness, useRoundness, useShowHints, BinaryClockSettings};

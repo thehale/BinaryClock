@@ -4,30 +4,41 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+import {StyleSheet, Text, View, ViewStyle} from 'react-native';
+
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
 
 interface BinaryDotProps {
   active: boolean;
   visible?: boolean;
   value?: number;
   brightness?: number;
+  roundness?: number;
   showHints?: boolean;
 }
 
+const DEFAULTS = {
+  visible: true,
+  value: 1,
+  brightness: 1,
+  roundness: 1,
+  showHints: false,
+};
+
+const FULL_ROUNDNESS_RADIUS = 30;
+
 const BinaryDot: React.FC<BinaryDotProps> = args => {
-  const defaults = {
-    visible: true,
-    value: 1,
-    brightness: 1,
-    showHints: false,
-  };
-  const props = {...defaults, ...args};
+  const props = {...DEFAULTS, ...args};
+  
   let active_modifier = props.active ? 1 : 0.25;
   let visible_modifier = props.visible ? 1 : 0;
-  let opacity = props.brightness * active_modifier * visible_modifier;
+  const overrides: ViewStyle = {
+    opacity: props.brightness * active_modifier * visible_modifier,
+    borderRadius: props.roundness * FULL_ROUNDNESS_RADIUS
+  }
+
   return (
-    <View style={[styles.dot, {opacity: opacity}]}>
+    <View style={[styles.dot, overrides]}>
       {props.showHints && props.value && (
         <View style={styles.hint}>
           <Text style={styles.hintText}>{props.value}</Text>
@@ -40,7 +51,6 @@ const BinaryDot: React.FC<BinaryDotProps> = args => {
 const styles = StyleSheet.create({
   dot: {
     margin: '15%',
-    borderRadius: 30,
     flex: 1,
     aspectRatio: 1,
     maxWidth: 60,

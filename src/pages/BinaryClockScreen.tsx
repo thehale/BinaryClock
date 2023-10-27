@@ -6,7 +6,7 @@
 
 import {Pressable, StatusBar, View, useWindowDimensions} from 'react-native';
 import React, {useEffect} from 'react';
-import {useBrightness, useShowHints} from '../utils/BinaryClockSettings';
+import {useBrightness, useRoundness, useShowHints} from '../utils/BinaryClockSettings';
 
 import BinaryClock from '../components/BinaryClock';
 import KeepAwake from 'react-native-keep-awake';
@@ -17,6 +17,7 @@ const BinaryClockScreen: React.FC<{
   navigation: any;
 }> = ({navigation}) => {
   const [brightness] = useBrightness();
+  const [roundness] = useRoundness();
   const [showHints] = useShowHints();
   const {height, width} = useWindowDimensions();
   let orientation =
@@ -40,6 +41,7 @@ const BinaryClockScreen: React.FC<{
           orientation={orientation}
           brightness={brightness}
           showHints={showHints}
+          roundness={roundness}
         />
       </View>
     </Pressable>

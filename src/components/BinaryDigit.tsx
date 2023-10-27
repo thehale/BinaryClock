@@ -4,28 +4,31 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
 import BinaryDot from './BinaryDot';
+import React from 'react';
 
 interface BinaryDigitProps {
   value: number;
   brightness?: number;
+  roundness?: number;
   maxVisible?: number;
   maxValue?: number;
   showHints?: boolean;
 }
 
+const DEFAULTS = {
+  brightness: 1,
+  roundness: 1,
+  maxVisible: 15,
+  maxValue: 15,
+  showHints: false,
+};
+
 /* eslint no-bitwise: ["error", { "allow": ["&"] }] */
 const BinaryDigit: React.FC<BinaryDigitProps> = args => {
-  const defaults = {
-    brightness: 1,
-    maxVisible: 15,
-    maxValue: 15,
-    showHints: false,
-  };
-  const props = {...defaults, ...args};
+  const props = {...DEFAULTS, ...args};
 
   let dotCount = 0;
   if (props.maxValue > 0) {
@@ -43,6 +46,7 @@ const BinaryDigit: React.FC<BinaryDigitProps> = args => {
             visible={props.maxVisible >= value}
             value={value}
             brightness={props.brightness}
+            roundness={props.roundness}
             showHints={props.showHints}
           />
         ))}
