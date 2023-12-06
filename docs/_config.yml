@@ -123,3 +123,7 @@ collections:
 
 # Markdown rendering
 markdown: kramdown
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
