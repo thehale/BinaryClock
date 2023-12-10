@@ -10,7 +10,7 @@ Check out how Binary Clock has evolved over time!
 <br>
 
 ### `Initial Release`
-# **Version 1.0**
+## **Version 1.0**
 Instead of the digits 1, 2, 3, etc... this clock uses columns of dots that turn
 on and off like the 1s and 0s of the binary form of the number.
 
@@ -22,7 +22,7 @@ Clock](https://links.jhale.dev/binaryclock), if you don't already know how!
 
 <br>
 
-## **Version 1.0.1**
+### **Version 1.0.1**
 Regular security and performance updates.
 
 #### Behind the Scenes
@@ -32,7 +32,7 @@ Regular security and performance updates.
 
 <br>
 
-## Version 1.0.2
+### Version 1.0.2
 Improvements to UX and first release on the Apple App Store!
 
 #### What's New
