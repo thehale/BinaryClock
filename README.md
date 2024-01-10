@@ -5,7 +5,7 @@ A nerdy way to tell time on Android/iOS 🕓
 <!-- BADGES -->
 [![](https://badgen.net/github/license/thehale/BinaryClock)](https://github.com/thehale/BinaryClock/blob/master/LICENSE)
 [![](https://badgen.net/badge/icon/Sponsor/pink?icon=github&label)](https://github.com/sponsors/thehale)
-[![](https://img.shields.io/badge/LinkedIn-thehale-0A66C2?logo=linkedin)](https://linkedin.com/in/thehale)
+[![](https://img.shields.io/badge/Follow-thehale-0A66C2?logo=linkedin)](https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=thehale)
 
 ![A gif showing the Binary Clock running on both an Android and iOS
 simulator](./docs/binary_clock_demo.gif)
