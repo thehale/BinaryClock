@@ -333,7 +333,8 @@ PODS:
     - React
   - react-native-safe-area-context (4.7.3):
     - React-Core
-  - react-native-slider (4.4.3):
+  - react-native-slider (4.5.0):
+    - RCT-Folly (= 2021.07.22.00)
     - React-Core
   - React-perflogger (0.71.14)
   - React-RCTActionSheet (0.71.14):
@@ -423,7 +424,7 @@ PODS:
     - React-Core
   - RNDefaultPreference (1.4.4):
     - React-Core
-  - RNScreens (3.26.0):
+  - RNScreens (3.29.0):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
   - SocketRocket (0.6.0)
@@ -634,7 +635,7 @@ SPEC CHECKSUMS:
   React-logger: 655ff5db8bd922acfbe76a4983ffab048916343e
   react-native-keep-awake: afad8a51dfef9fe9655a6344771be32c8596d774
   react-native-safe-area-context: 238cd8b619e05cb904ccad97ef42e84d1b5ae6ec
-  react-native-slider: 1cdd6ba29675df21f30544253bf7351d3c2d68c4
+  react-native-slider: cc89964e1432fa31aa9db7a0fa9b21e26b5d5152
   React-perflogger: 4987ad83731c23d11813c84263963b0d3028c966
   React-RCTActionSheet: 5ad952b2a9740d87a5bd77280c4bc23f6f89ea0c
   React-RCTAnimation: d2de22af3f536cc80bb5b3918e1a455114d1b985
@@ -650,7 +651,7 @@ SPEC CHECKSUMS:
   ReactCommon: 7f3dd5e98a9ec627c6b03d26c062bf37ea9fc888
   RNBootSplash: 85f6b879c080e958afdb4c62ee04497b05fd7552
   RNDefaultPreference: 08bdb06cfa9188d5da97d4642dac745218d7fb31
-  RNScreens: 2a28f2973f4d0d4623e18629ebfc2c4adaceb39a
+  RNScreens: 3c5b9f4a9dcde752466854b6109b79c0e205dad3
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: e71803b4c1fff832ccf9b92541e00f9b873119b9
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
