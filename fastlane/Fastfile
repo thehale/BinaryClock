@@ -56,7 +56,26 @@ platform :ios do
       issuer_id: ENV["IOS_APP_STORE_CONNECT_ISSUER_ID"],
       key_filepath: ENV["IOS_APP_STORE_CONNECT_KEY_FILE_PATH"],
     )
-    pilot
+    upload_to_testflight
+  end
+  
+  desc "Publish a production release to the App Store"
+  lane :production do
+    build
+    app_store_connect_api_key(
+      key_id: ENV["IOS_APP_STORE_CONNECT_KEY_ID"],
+      issuer_id: ENV["IOS_APP_STORE_CONNECT_ISSUER_ID"],
+      key_filepath: ENV["IOS_APP_STORE_CONNECT_KEY_FILE_PATH"],
+    )
+    upload_to_app_store(
+      precheck_include_in_app_purchases: false,
+      submission_information: {
+        add_id_info_uses_idfa: false,
+      },
+      submit_for_review: true,
+      metadata_path: "./fastlane/metadata/ios",
+      force: true
+    )
   end
 
 end
