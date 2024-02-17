@@ -4,10 +4,11 @@ source 'https://rubygems.org'
 ruby '>= 2.6.10'
 
 gem 'cocoapods', '>= 1.12.1'
+gem 'activesupport', '>= 6.1.7.5', '< 7.1.0'
 
 # Constraints imposed in response to Dependabot security warnings.
-gem "cocoapods-downloader", ">= 1.6.3"
-gem "activesupport", ">= 6.1.7.5"
+gem 'cocoapods-downloader', '>= 1.6.3'
+
 
 gem 'fastlane'
 
