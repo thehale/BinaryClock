@@ -11,6 +11,7 @@
     "bundle": "yarn env yarn bundle:ios && yarn bundle:android",
     "bundle:ios": "yarn env react-native rnx-bundle --platform ios",
     "bundle:android": "yarn env react-native rnx-bundle --platform android",
+    "apps": "yarn install && yarn pods && yarn ios && yarn android",
     "start": "yarn env react-native rnx-start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
