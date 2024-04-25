@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/BootTheme">
         <receiver
-            android:name="com.binaryclock.BinaryClockWidget"
+            android:name="dev.jhale.binaryclock.BinaryClockWidget"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -22,14 +22,6 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/binary_clock_widget_info" />
         </receiver>
-
-        <activity
-            android:name="com.binaryclock.BinaryClockWidgetConfigureActivity"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".MainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"

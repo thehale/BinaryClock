@@ -1,10 +1,9 @@
-package com.binaryclock
+package dev.jhale.binaryclock
 
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.widget.RemoteViews
-import dev.jhale.binaryclock.R
 
 /**
  * Implementation of App Widget functionality.
