@@ -1,19 +1,14 @@
 // Adapted from: https://stackoverflow.com/a/54146923/14765128
 import groovy.json.JsonSlurper
 
-tasks.whenTaskAdded { task ->
-    if (task.name == 'bundleRelease') {
-        syncVersionNameFromPackageJson()
+task syncVersionName {
+    doLast {
+        def versionName = getVersionFromNpm()
+        ant.propertyfile(file: "../gradle.properties") {
+            entry(key: "VERSION_NAME", value: versionName)
+        }
     }
 }
-
-def syncVersionNameFromPackageJson() {
-    def versionName = getVersionFromNpm()
-    ant.propertyfile(file: "../gradle.properties") {
-        entry(key: "VERSION_NAME", value: versionName)
-    }
-}
-
 
 def getVersionFromNpm() {
     def inputFile = new File("$rootDir/../package.json")

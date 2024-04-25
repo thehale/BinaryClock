@@ -84,6 +84,8 @@ platform :android do
 
   desc "Build the Android application."
   lane :build do
+    gradle(task: 'incrementVersionCode', project_dir: 'android/')
+    gradle(task: 'syncVersionName', project_dir: 'android/')
     gradle(task: 'clean', project_dir: 'android/')
     gradle(task: 'bundle', build_type: 'Release', project_dir: 'android/')
   end
