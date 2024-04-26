@@ -24,7 +24,7 @@ class MainActivity : ReactActivity() {
   override fun createReactActivityDelegate(): ReactActivityDelegate =
       DefaultReactActivityDelegate(this, mainComponentName, fabricEnabled)
 
-  override protected fun onCreate(savedInstanceState: Bundle?) {
+  override fun onCreate(savedInstanceState: Bundle?) {
     RNBootSplash.init(this) // ⬅️ initialize the splash screen
     super.onCreate(savedInstanceState) // or super.onCreate(null) with react-native-screens
   }
