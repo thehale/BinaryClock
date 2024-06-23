@@ -18,7 +18,7 @@ default_platform(:ios)
 desc "Make sure to copy the `.env.dist` to `.env` and fill all values before running any lanes"
 
 platform :ios do
-  
+
   desc 'Fetch certificates and provisioning profiles'
   lane :certificates do
     match(type: 'development', keychain_password: ENV['MATCH_PASSWORD'])
@@ -76,6 +76,34 @@ platform :ios do
       metadata_path: "./fastlane/metadata/ios",
       force: true
     )
+  end
+
+  desc 'Reset certificates and provisioning profiles (e.g. after expiration)'
+  lane :certificates_reset do
+    echo(message: "----------------------------------------------------------")
+    echo(message: "👀 Resetting certificates takes some manual work...")
+    echo(message: "  (1) App Store Connect")
+    echo(message: "      - [ ] Revoke expired certificates: https://developer.apple.com/account/resources/certificates/list")
+    echo(message: "      - [ ] Revoke expired profiles: https://developer.apple.com/account/resources/profiles/list")
+    echo(message: "  (2) Git: %{url}" % { url: ENV['IOS_CERTIFICATE_REPOSITORY_URL']})
+    echo(message: "      - [ ] Delete expired certificates (.cer, .p12)")
+    echo(message: "      - [ ] Delete expired profiles (.mobileprovision)")
+    echo(message: "----------------------------------------------------------")
+    complete = prompt(text: "Have you completed the manual steps above?", boolean: true)
+    if complete
+      echo(message: "🏗️ Attempting to update certificates")
+      begin
+        sh('sed -i "" "s/readonly/# readonly/" Matchfile')  # Make certificates editable
+        certificates
+        echo(message: "✅ Certificates updated.")
+        echo(message: "👀 Double check your keychain to ensure old certs are no longer installed.")
+        echo(message: "🆘 If you still have signing problems, try here: https://forums.developer.apple.com/forums/thread/712005")
+      ensure
+        sh('sed -i "" "s/# readonly/readonly/" Matchfile')  # Re-lock edits of certificates
+      end
+    else
+      echo(message: "❌ Certificates were NOT adjusted")
+    end
   end
 
 end
