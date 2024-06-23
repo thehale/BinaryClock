@@ -10,15 +10,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install dependencies
-        run: yarn install
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Install dependencies
+        run: yarn install
       - name: Build Application
         run: |
-          cd android
-          ./gradlew bundleRelease
-
+          echo $SECRETS_TAR_GZ_B64 | base64 -d | tar -xz -C fastlane
+          bundle exec fastlane android build
+        env:
+          SECRETS_TAR_GZ_B64: ${{ secrets.SECRETS_TAR_GZ_B64 }}
