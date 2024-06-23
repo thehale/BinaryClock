@@ -51,6 +51,7 @@
     "@rnx-kit/cli": "^0.16.8",
     "@rnx-kit/metro-config": "^1.3.6",
     "@rnx-kit/metro-resolver-symlinks": "^0.1.28",
+    "@types/jest": "^29.5.12",
     "@types/react": "^18.2.6",
     "@types/react-native": "^0.67.3",
     "@types/react-native-keep-awake": "^2.0.3",

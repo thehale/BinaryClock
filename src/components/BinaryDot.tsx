@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Joseph Hale
+// Copyright (c) 2022-2024 Joseph Hale
 //
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -6,20 +6,17 @@
 
 import {StyleSheet, Text, View, ViewStyle} from 'react-native';
 
+import {BinaryBit} from '../utils/binaryTime';
 import React from 'react';
 
 interface BinaryDotProps {
-  active: boolean;
-  visible?: boolean;
-  value?: number;
+  bit: BinaryBit;
   brightness?: number;
   roundness?: number;
   showHints?: boolean;
 }
 
 const DEFAULTS = {
-  visible: true,
-  value: 1,
   brightness: 1,
   roundness: 1,
   showHints: false,
@@ -30,8 +27,8 @@ const FULL_ROUNDNESS_RADIUS = 30;
 const BinaryDot: React.FC<BinaryDotProps> = args => {
   const props = {...DEFAULTS, ...args};
 
-  let active_modifier = props.active ? 1 : 0.25;
-  let visible_modifier = props.visible ? 1 : 0;
+  let active_modifier = props.bit.active ? 1 : 0.25;
+  let visible_modifier = props.bit.visible ? 1 : 0;
   const overrides: ViewStyle = {
     opacity: props.brightness * active_modifier * visible_modifier,
     borderRadius: props.roundness * FULL_ROUNDNESS_RADIUS,
@@ -39,9 +36,9 @@ const BinaryDot: React.FC<BinaryDotProps> = args => {
 
   return (
     <View style={[styles.dot, overrides]}>
-      {props.showHints && props.value && (
+      {props.showHints && props.bit.value && (
         <View style={styles.hint}>
-          <Text style={styles.hintText}>{props.value}</Text>
+          <Text style={styles.hintText}>{props.bit.value}</Text>
         </View>
       )}
     </View>

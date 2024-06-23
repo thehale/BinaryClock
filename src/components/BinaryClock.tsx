@@ -1,14 +1,16 @@
-// Copyright (c) 2022 Joseph Hale
+// Copyright (c) 2022-2024 Joseph Hale
 //
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import React, {useEffect, useState} from 'react';
+import {BinaryTimeMode, asBinaryTime} from '../utils/binaryTime';
 import {StyleSheet, View} from 'react-native';
 
 import BinaryDigit from './BinaryDigit';
 import Orientation from '../utils/orientation';
+import React from 'react';
+import {useTime} from '../utils/useTime';
 
 interface BinaryClockProps {
   orientation?: Orientation;
@@ -26,48 +28,25 @@ const DEFAULTS = {
 
 const BinaryClock: React.FC<BinaryClockProps> = args => {
   const props = {...DEFAULTS, ...args};
-
-  const [time, setTime] = useState(new Date());
-  useEffect(() => {
-    const toggle = setInterval(() => {
-      setTime(new Date());
-    }, 50);
-    return () => clearInterval(toggle);
-  });
-
-  let digits = [];
-  let hours = time.getHours();
-  let minutes = time.getMinutes();
-  let seconds = time.getSeconds();
-  switch (props.orientation) {
-    case Orientation.Portrait:
-      digits = [
-        {key: 'h', value: hours, maxVisible: 23},
-        {key: 'm', value: minutes, maxVisible: 59},
-        {key: 's', value: seconds, maxVisible: 59},
-      ];
-      break;
-    case Orientation.Landscape:
-      digits = [
-        {key: 'h10', value: firstDigit(hours), maxVisible: 2},
-        {key: 'h1', value: secondDigit(hours), maxVisible: 9},
-        {key: 'm10', value: firstDigit(minutes), maxVisible: 5},
-        {key: 'm1', value: secondDigit(minutes), maxVisible: 9},
-        {key: 's10', value: firstDigit(seconds), maxVisible: 5},
-        {key: 's1', value: secondDigit(seconds), maxVisible: 9},
-      ];
-      break;
-  }
-  let maxValue = Math.max(...digits.map(digit => digit.maxVisible));
+  const time = useTime();
+  const binaryTime = asBinaryTime(
+    {
+      hours: time.getHours(),
+      minutes: time.getMinutes(),
+      seconds: time.getSeconds(),
+    },
+    {
+      [Orientation.Portrait]: BinaryTimeMode.SINGLE_DIGITS,
+      [Orientation.Landscape]: BinaryTimeMode.DOUBLE_DIGITS,
+    }[props.orientation],
+  );
 
   return (
     <View style={styles.binaryClock}>
-      {digits.map(digit => (
+      {binaryTime.digits.map((digit, idx) => (
         <BinaryDigit
-          key={digit.key}
-          value={digit.value}
-          maxVisible={digit.maxVisible}
-          maxValue={maxValue}
+          key={idx}
+          digit={digit}
           brightness={props.brightness}
           roundness={props.roundness}
           showHints={props.showHints}
@@ -76,13 +55,6 @@ const BinaryClock: React.FC<BinaryClockProps> = args => {
     </View>
   );
 };
-
-function firstDigit(value: number) {
-  return Math.floor(value / 10);
-}
-function secondDigit(value: number) {
-  return value % 10;
-}
 
 const styles = StyleSheet.create({
   binaryClock: {
