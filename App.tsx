@@ -16,7 +16,8 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <NavigationContainer onReady={() => RNBootSplash.hide({fade: true, duration: 500})}>
+    <NavigationContainer
+      onReady={() => RNBootSplash.hide({fade: true, duration: 500})}>
       <Stack.Navigator>
         <Stack.Screen
           name="BinaryClockScreen"

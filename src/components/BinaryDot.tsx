@@ -29,13 +29,13 @@ const FULL_ROUNDNESS_RADIUS = 30;
 
 const BinaryDot: React.FC<BinaryDotProps> = args => {
   const props = {...DEFAULTS, ...args};
-  
+
   let active_modifier = props.active ? 1 : 0.25;
   let visible_modifier = props.visible ? 1 : 0;
   const overrides: ViewStyle = {
     opacity: props.brightness * active_modifier * visible_modifier,
-    borderRadius: props.roundness * FULL_ROUNDNESS_RADIUS
-  }
+    borderRadius: props.roundness * FULL_ROUNDNESS_RADIUS,
+  };
 
   return (
     <View style={[styles.dot, overrides]}>

@@ -6,7 +6,11 @@
 
 import {Pressable, StatusBar, View, useWindowDimensions} from 'react-native';
 import React, {useEffect} from 'react';
-import {useBrightness, useRoundness, useShowHints} from '../utils/BinaryClockSettings';
+import {
+  useBrightness,
+  useRoundness,
+  useShowHints,
+} from '../utils/BinaryClockSettings';
 
 import BinaryClock from '../components/BinaryClock';
 import KeepAwake from 'react-native-keep-awake';

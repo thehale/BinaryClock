@@ -16,7 +16,7 @@
     "deploy:production": "fastlane ios production && fastlane android production",
     "start": "yarn env react-native rnx-start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx src App.tsx index.js",
     "icons": "react-native-svg-app-icon",
     "splash": "yarn react-native generate-bootsplash --background-color '#000' splash.svg",
     "android-menu": "adb shell input keyevent 82",
