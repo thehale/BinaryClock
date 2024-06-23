@@ -21,14 +21,14 @@ platform :ios do
 
   desc 'Fetch certificates and provisioning profiles'
   lane :certificates do
+    setup_ci if ENV['CI']
     match(type: 'development', keychain_password: ENV['MATCH_PASSWORD'])
     match(type: 'appstore', keychain_password: ENV['MATCH_PASSWORD'])
   end
 
   desc 'Build the iOS application.'
   lane :build do
-    # certificates
-
+    certificates if ENV['CI']
     require "json"
     package_json = JSON.parse(File.read("../package.json"))
     increment_version_number_in_xcodeproj(

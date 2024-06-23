@@ -1,0 +1,32 @@
+name: "iOS"
+
+on:
+  push:
+    branches: ["master", "ci"]
+
+jobs:
+  build:
+    timeout-minutes: 20
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Install dependencies
+        run: |
+          yarn install
+          yarn pods
+      - name: Build Application
+        run: |
+          echo $SECRETS_TAR_GZ_B64 | base64 -d | tar -xz -C fastlane
+          bundle exec fastlane ios build
+        env:
+          SECRETS_TAR_GZ_B64: ${{ secrets.SECRETS_TAR_GZ_B64 }}
+          MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
