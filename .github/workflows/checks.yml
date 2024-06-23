@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install dependencies
-        run: yarn
+        run: yarn install
       - name: Check lint rules
         run: yarn lint
       - name: Run JavaScript Tests
