@@ -7,7 +7,7 @@
 import {type BinaryBit, type BinaryDigit} from '../../binaryTime';
 
 declare module 'expect' {
-  interface AssymmetricMatchers {
+  interface AsymmetricMatchers {
     toRepresentBinary(templates: string | string[]): void;
   }
   interface Matchers<R> {
