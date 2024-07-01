@@ -24,6 +24,8 @@ jobs:
         with:
           node-version-file: 'package.json'
           cache: 'yarn'
+      - name: Install Node dependencies
+        run: yarn install
       - name: Build Application
         run: |
           echo $SECRETS_TAR_GZ_B64 | base64 -d | tar -xz -C fastlane
