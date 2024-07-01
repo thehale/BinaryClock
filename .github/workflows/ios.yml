@@ -19,10 +19,21 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - name: Install dependencies
-        run: |
-          yarn install
-          yarn pods
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: 'package.json'
+          cache: 'yarn'
+      - name: Setup Cocoapods [cache]
+        uses: actions/cache@v2
+        id: cocoapods-cache
+        with:
+          path: ios/Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+          restore-keys: ${{ runner.os }}-pods-
+      - name: Setup CocoaPods [no-cache]
+        if: steps.cocoapods-cache.outputs.cache-hit != 'true'
+        run: yarn pods
       - name: Build Application
         run: |
           echo $SECRETS_TAR_GZ_B64 | base64 -d | tar -xz -C fastlane
