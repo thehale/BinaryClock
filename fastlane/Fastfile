@@ -22,8 +22,8 @@ platform :ios do
   desc 'Fetch certificates and provisioning profiles'
   lane :certificates do
     setup_ci if ENV['CI']
-    match(type: 'development', keychain_password: ENV['MATCH_PASSWORD'])
-    match(type: 'appstore', keychain_password: ENV['MATCH_PASSWORD'])
+    match(type: 'development')
+    match(type: 'appstore')
   end
 
   desc 'Build the iOS application.'
