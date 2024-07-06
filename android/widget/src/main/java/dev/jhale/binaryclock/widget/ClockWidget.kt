@@ -11,6 +11,8 @@ import android.content.Intent
 import android.util.Log
 import android.widget.RemoteViews
 import java.util.Calendar
+import java.util.Timer
+import kotlin.concurrent.scheduleAtFixedRate
 
 /**
  * Implementation of App Widget functionality.
@@ -53,10 +55,12 @@ internal fun updateAppWidget(
 
 //    val ticker = TextClock(context, TextClock.class)
 //    ticker.addTextChangedListener() //https://developer.android.com/reference/android/widget/TextView#addTextChangedListener(android.text.TextWatcher)
-    views.setTextViewText(R.id.appwidget_text, "${currentClockTime()}")
+    Timer().scheduleAtFixedRate(0, 1_000) {
+        views.setTextViewText(R.id.appwidget_text, "${currentClockTime()}")
+        // Instruct the widget manager to update the widget
+        appWidgetManager.updateAppWidget(appWidgetId, views)
+    }
 
-    // Instruct the widget manager to update the widget
-    appWidgetManager.updateAppWidget(appWidgetId, views)
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -80,9 +84,9 @@ internal fun currentClockTime(): ClockTime {
 private fun scheduleWidgetUpdate(context: Context) {
     val alarms = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
     val intent = widgetUpdatePendingIntent(context)
-    val nextUpdateMillis = System.currentTimeMillis() + 1000
+    val nextUpdateMillis = System.currentTimeMillis() + (1_000 * 60 * 15)
     alarms.setExact(RTC, nextUpdateMillis, intent)
-    Log.i("widget:schedule:update", "Scheduled next update for $nextUpdateMillis - ${currentClockTime().copy(seconds = currentClockTime().seconds + 1)}")
+    Log.i("widget:schedule:update", "Scheduled next update for $nextUpdateMillis - ${currentClockTime().copy(seconds = currentClockTime().minutes + 15)}")
 }
 
 private fun widgetUpdatePendingIntent(context: Context): PendingIntent {
