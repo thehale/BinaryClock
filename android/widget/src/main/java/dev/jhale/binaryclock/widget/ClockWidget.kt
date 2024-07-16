@@ -5,6 +5,7 @@ import android.app.AlarmManager.RTC
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
+import android.content.BroadcastReceiver
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -13,6 +14,14 @@ import android.widget.RemoteViews
 import java.util.Calendar
 import java.util.Timer
 import kotlin.concurrent.scheduleAtFixedRate
+
+class WidgetReceiver: BroadcastReceiver() {
+    override fun onReceive(context: Context, intent: Intent) {
+        Log.d("widget:boot", "Boot intent received: ${intent}")
+        scheduleWidgetUpdate(context)
+    }
+
+}
 
 /**
  * Implementation of App Widget functionality.
@@ -52,13 +61,15 @@ internal fun updateAppWidget(
 //    val widgetText = context.getString(R.string.appwidget_text)
     // Construct the RemoteViews object
     val views = RemoteViews(context.packageName, R.layout.clock_widget)
+    Log.d("widget:update:start", "Updating widget #$appWidgetId")
 
 //    val ticker = TextClock(context, TextClock.class)
 //    ticker.addTextChangedListener() //https://developer.android.com/reference/android/widget/TextView#addTextChangedListener(android.text.TextWatcher)
     Timer().scheduleAtFixedRate(0, 1_000) {
-        views.setTextViewText(R.id.appwidget_text, "${currentClockTime()}")
+        views.setTextViewText(R.id.appwidget_text, "[#$appWidgetId] ${currentClockTime()}")
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views)
+        Log.d("widget:update:repeat", "Updating widget #$appWidgetId")
     }
 
 }
