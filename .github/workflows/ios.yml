@@ -42,3 +42,4 @@ jobs:
         env:
           SECRETS_TAR_GZ_B64: ${{ secrets.SECRETS_TAR_GZ_B64 }}
           MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
+          RUBYOPT: '-rostruct' # Workaround for "NameError: uninitialized constant Fastlane::OpenStruct" (source: https://github.com/fastlane/fastlane/issues/21944#issuecomment-2045244250)

@@ -32,3 +32,4 @@ jobs:
           bundle exec fastlane android build
         env:
           SECRETS_TAR_GZ_B64: ${{ secrets.SECRETS_TAR_GZ_B64 }}
+          RUBYOPT: '-rostruct' # Workaround for "NameError: uninitialized constant Fastlane::OpenStruct" (source: https://github.com/fastlane/fastlane/issues/21944#issuecomment-2045244250)
