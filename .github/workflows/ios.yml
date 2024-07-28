@@ -38,7 +38,7 @@ jobs:
       - name: Build Application
         run: |
           echo $SECRETS_TAR_GZ_B64 | base64 -d | tar -xz -C fastlane
-          bundle exec fastlane ios build || cat ${{ env.FASTLANE_LOG_PATH }}
+          bundle exec fastlane ios build || cat ${{ env.FASTLANE_LOG_PATH }} && exit 1
         env:
           SECRETS_TAR_GZ_B64: ${{ secrets.SECRETS_TAR_GZ_B64 }}
           MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
