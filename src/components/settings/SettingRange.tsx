@@ -4,9 +4,11 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 import {StyleSheet, Text} from 'react-native';
-import React from 'react';
+
 import SettingItem from './SettingItem';
 import Slider from '@react-native-community/slider';
+import debounce from 'lodash/debounce';
+import {useCallback} from 'react';
 
 type Props = {
   title: string;
@@ -19,15 +21,20 @@ type Props = {
   step?: number;
 };
 
+const propDefaults = {
+  caption: '',
+  initialValue: 0,
+  min: 0,
+  max: 1,
+  step: 0.01,
+};
+
 const SettingRange = (props: Props) => {
-  const defaults = {
-    caption: '',
-    initialValue: 0,
-    min: 0,
-    max: 1,
-    step: 0.01,
-  };
-  const args = {...defaults, ...props};
+  const onValueChange = useCallback(
+    debounce(props.onValueChange, 25, {leading: true, trailing: true}),
+    [props.onValueChange],
+  );
+  const args = {...propDefaults, ...props};
   return (
     <SettingItem
       title={args.title}
@@ -36,7 +43,7 @@ const SettingRange = (props: Props) => {
       bottom={
         <Slider
           value={args.initialValue}
-          onValueChange={args.onValueChange}
+          onValueChange={onValueChange}
           minimumValue={args.min}
           maximumValue={args.max}
           step={args.step}
