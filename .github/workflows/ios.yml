@@ -27,7 +27,7 @@ jobs:
       - name: Install Node dependencies
         run: yarn install
       - name: Setup Cocoapods [cache]
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         id: cocoapods-cache
         with:
           path: ios/Pods
