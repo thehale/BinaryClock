@@ -39,6 +39,7 @@ platform :ios do
       xcodeproj: "ios/BinaryClock.xcodeproj"
     )
 
+    xcversion(version: "15.2")
     gym
 
     echo(message: "----------------------------------------------------------")
