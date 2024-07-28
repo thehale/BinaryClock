@@ -3,12 +3,13 @@
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+import React, {useCallback} from 'react';
 import {StyleSheet, Text} from 'react-native';
 
 import SettingItem from './SettingItem';
 import Slider from '@react-native-community/slider';
 import debounce from 'lodash/debounce';
-import {useCallback} from 'react';
 
 type Props = {
   title: string;
@@ -30,6 +31,7 @@ const propDefaults = {
 };
 
 const SettingRange = (props: Props) => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const onValueChange = useCallback(
     debounce(props.onValueChange, 25, {leading: true, trailing: true}),
     [props.onValueChange],
