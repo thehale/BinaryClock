@@ -17,21 +17,25 @@ type Props = {
   onValueSet: (value: boolean) => void;
 };
 
-const SettingBoolean = (props: Props) => {
-  const onValueChange = useCallback(
+const SettingBoolean = ({
+  title,
+  subtitle,
+  initialValue,
+  onValueChange,
+  onValueSet,
+}: Props) => {
+  const _onValueChange = useCallback(
     (value: boolean) => {
-      props.onValueChange(value);
-      props.onValueSet(value);
+      onValueChange(value);
+      onValueSet(value);
     },
-    [props.onValueChange, props.onValueSet],
+    [onValueChange, onValueSet],
   );
   return (
     <SettingItem
-      title={props.title}
-      subtitle={props.subtitle}
-      right={
-        <Switch onValueChange={onValueChange} value={props.initialValue} />
-      }
+      title={title}
+      subtitle={subtitle}
+      right={<Switch onValueChange={_onValueChange} value={initialValue} />}
     />
   );
 };

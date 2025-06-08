@@ -59,8 +59,7 @@ const BinaryClockScreen: React.FC = () => {
         {showSettings.value && (
           <ScrollView
             style={styles.settingsContainer}
-            contentContainerStyle={styles.settingsContentContainer}
-            >
+            contentContainerStyle={styles.settingsContentContainer}>
             <SettingRange
               title="Brightness"
               initialValue={brightness}
@@ -122,7 +121,7 @@ function Clock({
         });
       }}>
       {!showClock ? (
-        <View style={{height: '100%', backgroundColor: 'black'}}></View>
+        <View style={styles.blankClock} />
       ) : (
         <BinaryClock
           orientation={orientation}
@@ -141,6 +140,10 @@ const styles = StyleSheet.create({
   },
   clockPreview: {
     flex: 2,
+  },
+  blankClock: {
+    height: '100%',
+    backgroundColor: 'black',
   },
   settingsContainer: {
     flex: 3,
