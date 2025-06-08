@@ -23,9 +23,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: 'package.json'
-          cache: 'yarn'
+          cache: 'npm'
       - name: Install Node dependencies
-        run: yarn install
+        run: npm install
       - name: Setup Cocoapods [cache]
         uses: actions/cache@v4
         id: cocoapods-cache
@@ -34,7 +34,7 @@ jobs:
           key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
           restore-keys: ${{ runner.os }}-pods-
       - name: Install CocoaPods
-        run: yarn pods
+        run: npm run pods
       - name: Build Application
         run: |
           echo $SECRETS_TAR_GZ_B64 | base64 -d | tar -xz -C fastlane
