@@ -77,3 +77,10 @@ Fill out all the credentials in `fastlane/.env` (make a copy of `fastlane/.env.d
 if it doesn't exist yet).
 
 Then see [`fastlane/README.md`](fastlane/README.md) for the commands.
+
+
+### Common Errors 
+
+`PIF Transfer` - Typically results from reinstalling Cocoapods (e.g. `npm run pods`) while XCode is still open. Close/quit XCode and reopen.
+
+`errSecInternalComponent` - The MacOS keychain is locked. Typically occurs when SSHing into the Mac. Use `security unlock-keychain` to fix the issue.
