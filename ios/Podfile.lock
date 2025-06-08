@@ -1577,6 +1577,27 @@ PODS:
     - React-logger (= 0.78.2)
     - React-perflogger (= 0.78.2)
     - React-utils (= 0.78.2)
+  - RNBootSplash (6.3.8):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.11.18.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - RNDefaultPreference (1.4.4):
     - React-Core
   - SocketRocket (0.7.1)
@@ -1652,6 +1673,7 @@ DEPENDENCIES:
   - ReactAppDependencyProvider (from `build/generated/ios`)
   - ReactCodegen (from `build/generated/ios`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - RNBootSplash (from `../node_modules/react-native-bootsplash`)
   - RNDefaultPreference (from `../node_modules/react-native-default-preference`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -1796,6 +1818,8 @@ EXTERNAL SOURCES:
     :path: build/generated/ios
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNBootSplash:
+    :path: "../node_modules/react-native-bootsplash"
   RNDefaultPreference:
     :path: "../node_modules/react-native-default-preference"
   Yoga:
@@ -1870,6 +1894,7 @@ SPEC CHECKSUMS:
   ReactAppDependencyProvider: b48473fe434569ff8f6cb6ed4421217ebcbda878
   ReactCodegen: 78b64f0ad96ef733616f54d0c20923f6c67287fd
   ReactCommon: 547db015202a80a5b3e7e041586ea54c4a087180
+  RNBootSplash: d23797aee2b43bc077e8d17dc3bf989c9ac2e682
   RNDefaultPreference: 08bdb06cfa9188d5da97d4642dac745218d7fb31
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: e14bad835e12b6c7e2260fc320bd00e0f4b45add

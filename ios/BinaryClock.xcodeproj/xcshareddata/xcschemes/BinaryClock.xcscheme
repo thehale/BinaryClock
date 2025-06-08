@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "BinaryClock.app"
+               BuildableName = "Binary Clock.app"
                BlueprintName = "BinaryClock"
                ReferencedContainer = "container:BinaryClock.xcodeproj">
             </BuildableReference>
@@ -55,7 +55,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "BinaryClock.app"
+            BuildableName = "Binary Clock.app"
             BlueprintName = "BinaryClock"
             ReferencedContainer = "container:BinaryClock.xcodeproj">
          </BuildableReference>
@@ -72,7 +72,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "BinaryClock.app"
+            BuildableName = "Binary Clock.app"
             BlueprintName = "BinaryClock"
             ReferencedContainer = "container:BinaryClock.xcodeproj">
          </BuildableReference>

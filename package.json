@@ -6,6 +6,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "pods": "cd ios && pod install",
+    "splash": "react-native-bootsplash generate splash.svg --platforms=android,ios --background=000000 --logo-width=100 --flavor=main && rm -rf assets",
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest"
@@ -16,6 +17,7 @@
     "lodash": "^4.17.21",
     "react": "19.0.0",
     "react-native": "0.78.2",
+    "react-native-bootsplash": "^6.3.8",
     "react-native-default-preference": "^1.4.4"
   },
   "devDependencies": {

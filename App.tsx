@@ -5,11 +5,13 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import BinaryClockScreen from './src/pages/BinaryClockScreen';
+import BootSplash from "react-native-bootsplash";
 import KeepAwake from '@sayem314/react-native-keep-awake';
 import React from 'react';
 import { StatusBar } from 'react-native';
 
-const App = () => {  
+const App = () => {
+  BootSplash.hide({fade: true});
   return (
     <>
       <StatusBar hidden={true} />
