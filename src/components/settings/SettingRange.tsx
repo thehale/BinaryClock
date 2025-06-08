@@ -14,6 +14,7 @@ import debounce from 'lodash/debounce';
 type Props = {
   title: string;
   onValueChange: (value: number) => void;
+  onValueSet: (value: number) => void;
   subtitle?: string;
   caption?: string;
   initialValue?: number;
@@ -33,7 +34,7 @@ const propDefaults = {
 const SettingRange = (props: Props) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const onValueChange = useCallback(
-    debounce(props.onValueChange, 25, {leading: true, trailing: true}),
+    debounce(props.onValueChange, 5, {leading: true, trailing: true}),
     [props.onValueChange],
   );
   const args = {...propDefaults, ...props};
@@ -46,6 +47,7 @@ const SettingRange = (props: Props) => {
         <Slider
           value={args.initialValue}
           onValueChange={onValueChange}
+          onSlidingComplete={args.onValueSet}
           minimumValue={args.min}
           maximumValue={args.max}
           step={args.step}
@@ -57,7 +59,7 @@ const SettingRange = (props: Props) => {
 
 const styles = StyleSheet.create({
   caption: {
-    color: 'black',
+    color: 'white',
   },
 });
 

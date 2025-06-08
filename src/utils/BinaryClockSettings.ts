@@ -7,7 +7,6 @@
 import {Dispatch, SetStateAction, useEffect, useState} from 'react';
 
 import DefaultPreference from 'react-native-default-preference';
-import {useIsFocused} from '@react-navigation/native';
 
 const BRIGHTNESS_KEY = 'brightness';
 const ROUNDNESS_KEY = 'roundness';
@@ -71,7 +70,6 @@ class BinaryClockSettings {
 
 function useBrightness(): [number, Dispatch<SetStateAction<number>>] {
   const [brightness, setBrightness] = useState(1);
-  const isFocused = useIsFocused();
   useEffect(() => {
     BinaryClockSettings.getBrightness()
       .then(value => {
@@ -84,13 +82,12 @@ function useBrightness(): [number, Dispatch<SetStateAction<number>>] {
         console.error(err);
         setBrightness(1);
       });
-  }, [isFocused]);
+  }, []);
   return [brightness, setBrightness];
 }
 
 function useRoundness(): [number, Dispatch<SetStateAction<number>>] {
   const [roundness, setRoundness] = useState(1);
-  const isFocused = useIsFocused();
   useEffect(() => {
     BinaryClockSettings.getRoundness()
       .then(value => {
@@ -103,13 +100,12 @@ function useRoundness(): [number, Dispatch<SetStateAction<number>>] {
         console.error(err);
         setRoundness(1);
       });
-  }, [isFocused]);
+  }, []);
   return [roundness, setRoundness];
 }
 
 function useShowHints(): [boolean, Dispatch<SetStateAction<boolean>>] {
   const [showHints, setShowHints] = useState(false);
-  const isFocused = useIsFocused();
   useEffect(() => {
     BinaryClockSettings.getShowHints()
       .then(value => {
@@ -120,7 +116,7 @@ function useShowHints(): [boolean, Dispatch<SetStateAction<boolean>>] {
         console.error(err);
         setShowHints(false);
       });
-  }, [isFocused]);
+  }, []);
   return [showHints, setShowHints];
 }
 

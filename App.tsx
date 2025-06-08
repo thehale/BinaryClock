@@ -5,36 +5,17 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import BinaryClockScreen from './src/pages/BinaryClockScreen';
-import BinaryClockSettingsScreen from './src/pages/BinaryClockSettingsScreen';
-import {NavigationContainer} from '@react-navigation/native';
+import KeepAwake from '@sayem314/react-native-keep-awake';
 import React from 'react';
-import Toast from 'react-native-toast-message';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { StatusBar } from 'react-native';
 
-const Stack = createNativeStackNavigator();
-
-const App = () => {
+const App = () => {  
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="BinaryClockScreen"
-          component={BinaryClockScreen}
-          options={{
-            title: 'Binary Clock',
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="BinaryClockSettingsScreen"
-          component={BinaryClockSettingsScreen}
-          options={{
-            title: 'Binary Clock Settings',
-          }}
-        />
-      </Stack.Navigator>
-      <Toast position={'bottom'} />
-    </NavigationContainer>
+    <>
+      <StatusBar hidden={true} />
+      <KeepAwake />
+      <BinaryClockScreen />
+    </>
   );
 };
 

@@ -5,6 +5,7 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import {StyleSheet, Text, View} from 'react-native';
+
 import React from 'react';
 
 type Props = {
@@ -46,13 +47,13 @@ const styles = StyleSheet.create({
     flex: 3,
   },
   title: {
-    color: 'black',
+    color: 'white',
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
   },
   subtitle: {
-    color: 'black',
+    color: 'white',
     marginBottom: 10,
   },
   right: {
