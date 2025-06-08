@@ -13,7 +13,7 @@ import {
 } from '../utils/BinaryClockSettings';
 
 import BinaryClock from '../components/BinaryClock';
-import KeepAwake from 'react-native-keep-awake';
+import KeepAwake from '@sayem314/react-native-keep-awake';
 import Orientation from '../utils/orientation';
 import Toast from 'react-native-toast-message';
 
