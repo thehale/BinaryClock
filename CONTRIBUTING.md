@@ -44,6 +44,66 @@ what each subfolder contains:
 - `utils`: The backend logic for storing and retriving user settings from
   persistent storage.
 
+## Common Commands
+
+### Running the app
+
+Dev Mode (e.g. Hot Reloading)
+```shell
+npm run android
+npm run ios
+```
+
+Production Mode
+```shell
+npm run android:release
+npm run ios:release
+```
+
+### Installing iOS native dependencies (Cocoapods)
+
+```shell
+npm run pods
+```
+
+### Updating Branding
+
+**App Icon**
+1. Update `icon.svg`
+2. `npm run icons`
+
+**Splash Screen**
+1. Update `splash.svg`
+2. `npm run splash`
+
+### Deployments
+
+Fill out all the credentials in `fastlane/.env` (make a copy of `fastlane/.env.dist`
+if it doesn't exist yet).
+
+**Building**
+
+Builds are automatically run as part of a release command, but sometimes its nice to test a build in isolation.
+
+```shell
+fastlane android build
+fastlane ios build
+```
+
+**Internal/Beta Release**
+```shell
+fastlane android internal
+fastlane ios beta
+```
+
+**Production Release**
+```shell
+fastlane android production
+fastlane ios production
+```
+
+See [`fastlane/README.md`](fastlane/README.md) for more details
+
 ## Submitting Contributions
 
 After completing the installation steps above, make whatever bug fixes or
@@ -71,15 +131,7 @@ Finally push up your changes to your fork and open a Pull Request (PR) back into
 
 ## Other Notes
 
-### Creating a Release Build
-
-Fill out all the credentials in `fastlane/.env` (make a copy of `fastlane/.env.dist`
-if it doesn't exist yet).
-
-Then see [`fastlane/README.md`](fastlane/README.md) for the commands.
-
-
-### Common Errors 
+### Common Error Messages / Solutions
 
 `PIF Transfer` - Typically results from reinstalling Cocoapods (e.g. `npm run pods`) while XCode is still open. Close/quit XCode and reopen.
 
