@@ -40,7 +40,10 @@ jobs:
           echo $SECRETS_TAR_GZ_B64 | base64 -d | tar -xz -C fastlane
           #  open secrets   | remove blanks   | grab values     |strip quotes| add the mask command           | redact from GitHub Actions logs
           cat fastlane/.env | grep -v '^\s*$' | cut -d "=" -f 2 |  tr -d '"' | awk '{print "::add-mask::"$0}' | xargs -n1 echo
-          bundle exec fastlane ios build || cat ${{ env.FASTLANE_LOG_PATH }} && exit 1
+          bundle exec fastlane ios build
+          result=$?
+          cat ${{ env.FASTLANE_LOG_PATH }}
+          exit $?
         env:
           SECRETS_TAR_GZ_B64: ${{ secrets.SECRETS_TAR_GZ_B64 }}
           MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
