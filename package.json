@@ -3,7 +3,7 @@
   "version": "1.2.0",
   "private": true,
   "scripts": {
-    "env": "dotenv -e ./fastlane/.env",
+    "env": "npx dotenv-cli -e ./fastlane/.env",
     "android": "npm run env react-native run-android",
     "android:release": "npm run env react-native run-android --mode=release",
     "ios": "npm run env react-native run-ios",
