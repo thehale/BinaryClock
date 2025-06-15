@@ -54,12 +54,6 @@ const styles = StyleSheet.create({
     maxHeight: 60,
     backgroundColor: 'green',
   },
-  activeDot: {
-    opacity: 1,
-  },
-  inactiveDot: {
-    opacity: 0.25,
-  },
   hint: {
     alignItems: 'center',
     justifyContent: 'center',
