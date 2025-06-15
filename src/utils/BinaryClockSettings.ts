@@ -13,7 +13,7 @@ const ROUNDNESS_KEY = 'roundness';
 const SHOW_HINTS_KEY = 'showHints';
 
 class BinaryClockSettings {
-  public static async getPreferences() {
+  public static async getSettings() {
     return {
       brightness: await this.getBrightness(),
       roundness: await this.getRoundness(),
@@ -21,7 +21,7 @@ class BinaryClockSettings {
     };
   }
 
-  public static async setPreferences(preferences: {
+  public static async setSettings(preferences: {
     brightness: number;
     roundness: number;
     showHints: boolean;
