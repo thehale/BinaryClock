@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
-import { BinaryTimeMode, asBinaryTime } from "./binaryTime";
-import { useTime } from "./useTime";
+import {useState, useEffect} from 'react';
+import {BinaryTimeMode, asBinaryTime} from './binaryTime';
+import {useTime} from './useTime';
+import isEqual from 'lodash/isEqual';
 
 export function useBinaryTime(
   mode: BinaryTimeMode = BinaryTimeMode.SINGLE_DIGITS,
@@ -14,8 +15,16 @@ export function useBinaryTime(
       prev.map((digit, idx) => {
         if (digit.value === newDigits[idx].value) {
           return digit;
+        } else {
+          // Where possible, preserve object references on a per-bit basis.
+          return {
+            value: newDigits[idx].value,
+            bits: digit.bits.map((bit, bitIdx) => {
+              const newBit = newDigits[idx].bits[bitIdx];
+              return isEqual(bit, newBit) ? bit : newBit;
+            }),
+          };
         }
-        return newDigits[idx];
       }),
     );
   }, [time, mode]);
