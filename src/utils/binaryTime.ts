@@ -41,9 +41,16 @@ export enum BinaryTimeMode {
 }
 
 export function asBinaryTime(
-  time: Time,
+  time: Time | Date,
   mode: BinaryTimeMode = BinaryTimeMode.SINGLE_DIGITS,
 ): BinaryTime {
+  if (time instanceof Date) {
+    time = {
+      hours: time.getHours(),
+      minutes: time.getMinutes(),
+      seconds: time.getSeconds(),
+    };
+  }
   switch (mode) {
     case BinaryTimeMode.SINGLE_DIGITS:
       return [

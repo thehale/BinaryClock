@@ -4,13 +4,13 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import {BinaryTimeMode, asBinaryTime} from '../utils/binaryTime';
+import {BinaryTimeMode} from '../utils/binaryTime';
 import {StyleSheet, View} from 'react-native';
 
 import BinaryDigit from './BinaryDigit';
 import Orientation from '../utils/orientation';
 import React from 'react';
-import {useTime} from '../utils/useTime';
+import { useBinaryTime } from '../utils/useBinaryTime';
 
 interface BinaryClockProps {
   orientation?: Orientation;
@@ -28,17 +28,10 @@ const DEFAULTS = {
 
 const BinaryClock: React.FC<BinaryClockProps> = args => {
   const props = {...DEFAULTS, ...args};
-  const time = useTime();
-  const digits = asBinaryTime(
-    {
-      hours: time.getHours(),
-      minutes: time.getMinutes(),
-      seconds: time.getSeconds(),
-    },
-    {
-      [Orientation.Portrait]: BinaryTimeMode.SINGLE_DIGITS,
-      [Orientation.Landscape]: BinaryTimeMode.DOUBLE_DIGITS,
-    }[props.orientation],
+  const digits = useBinaryTime(
+    props.orientation === Orientation.Landscape
+      ? BinaryTimeMode.DOUBLE_DIGITS
+      : BinaryTimeMode.SINGLE_DIGITS,
   );
 
   return (
