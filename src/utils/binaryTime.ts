@@ -24,9 +24,7 @@ export interface BinaryDigit {
   value: number;
 }
 
-interface BinaryTime {
-  digits: BinaryDigit[];
-}
+type BinaryTime = BinaryDigit[];
 
 interface Time {
   hours: number;
@@ -48,45 +46,41 @@ export function asBinaryTime(
 ): BinaryTime {
   switch (mode) {
     case BinaryTimeMode.SINGLE_DIGITS:
-      return {
-        digits: [
-          asBinaryDigit(time.hours, {maxVisibleValue: 23, maxValue: 59}),
-          asBinaryDigit(time.minutes, {maxVisibleValue: 59, maxValue: 59}),
-          asBinaryDigit(time.seconds, {maxVisibleValue: 59, maxValue: 59}),
-        ],
-      };
+      return [
+        asBinaryDigit(time.hours, {maxVisibleValue: 23, maxValue: 59}),
+        asBinaryDigit(time.minutes, {maxVisibleValue: 59, maxValue: 59}),
+        asBinaryDigit(time.seconds, {maxVisibleValue: 59, maxValue: 59}),
+      ];
 
     case BinaryTimeMode.DOUBLE_DIGITS:
       const firstDigit = (n: number) => Math.floor(n / 10);
       const secondDigit = (n: number) => n % 10;
-      return {
-        digits: [
-          asBinaryDigit(firstDigit(time.hours), {
-            maxVisibleValue: 2,
-            maxValue: 9,
-          }),
-          asBinaryDigit(secondDigit(time.hours), {
-            maxVisibleValue: 9,
-            maxValue: 9,
-          }),
-          asBinaryDigit(firstDigit(time.minutes), {
-            maxVisibleValue: 5,
-            maxValue: 9,
-          }),
-          asBinaryDigit(secondDigit(time.minutes), {
-            maxVisibleValue: 9,
-            maxValue: 9,
-          }),
-          asBinaryDigit(firstDigit(time.seconds), {
-            maxVisibleValue: 5,
-            maxValue: 9,
-          }),
-          asBinaryDigit(secondDigit(time.seconds), {
-            maxVisibleValue: 9,
-            maxValue: 9,
-          }),
-        ],
-      };
+      return [
+        asBinaryDigit(firstDigit(time.hours), {
+          maxVisibleValue: 2,
+          maxValue: 9,
+        }),
+        asBinaryDigit(secondDigit(time.hours), {
+          maxVisibleValue: 9,
+          maxValue: 9,
+        }),
+        asBinaryDigit(firstDigit(time.minutes), {
+          maxVisibleValue: 5,
+          maxValue: 9,
+        }),
+        asBinaryDigit(secondDigit(time.minutes), {
+          maxVisibleValue: 9,
+          maxValue: 9,
+        }),
+        asBinaryDigit(firstDigit(time.seconds), {
+          maxVisibleValue: 5,
+          maxValue: 9,
+        }),
+        asBinaryDigit(secondDigit(time.seconds), {
+          maxVisibleValue: 9,
+          maxValue: 9,
+        }),
+      ];
   }
 }
 

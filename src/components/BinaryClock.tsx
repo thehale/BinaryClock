@@ -29,7 +29,7 @@ const DEFAULTS = {
 const BinaryClock: React.FC<BinaryClockProps> = args => {
   const props = {...DEFAULTS, ...args};
   const time = useTime();
-  const binaryTime = asBinaryTime(
+  const digits = asBinaryTime(
     {
       hours: time.getHours(),
       minutes: time.getMinutes(),
@@ -43,7 +43,7 @@ const BinaryClock: React.FC<BinaryClockProps> = args => {
 
   return (
     <View style={styles.binaryClock}>
-      {binaryTime.digits.map((digit, idx) => (
+      {digits.map((digit, idx) => (
         <BinaryDigit
           key={idx}
           digit={digit}

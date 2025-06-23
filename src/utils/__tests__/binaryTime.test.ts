@@ -16,22 +16,22 @@ import {describe, expect, test} from '@jest/globals';
 
 describe('Time to Binary Time (Single Digits)', () => {
   test('midnight is all zeros', () => {
-    const time = asBinaryTime({hours: 0, minutes: 0, seconds: 0});
-    expect(time.digits).toRepresentBinary([' 00000', '000000', '000000']);
+    const digits = asBinaryTime({hours: 0, minutes: 0, seconds: 0});
+    expect(digits).toRepresentBinary([' 00000', '000000', '000000']);
   });
   test('just before midnight converts correctly', () => {
-    const time = asBinaryTime({hours: 23, minutes: 59, seconds: 59});
-    expect(time.digits).toRepresentBinary([' 10111', '111011', '111011']);
+    const digits = asBinaryTime({hours: 23, minutes: 59, seconds: 59});
+    expect(digits).toRepresentBinary([' 10111', '111011', '111011']);
   });
 });
 
 describe('Time to Binary Time (Double Digits)', () => {
   test('midnight is all zeros', () => {
-    const time = asBinaryTime(
+    const digits = asBinaryTime(
       {hours: 0, minutes: 0, seconds: 0},
       BinaryTimeMode.DOUBLE_DIGITS,
     );
-    expect(time.digits).toRepresentBinary([
+    expect(digits).toRepresentBinary([
       '  00',
       '0000',
       ' 000',
@@ -41,11 +41,11 @@ describe('Time to Binary Time (Double Digits)', () => {
     ]);
   });
   test('just before midnight converts correctly', () => {
-    const time = asBinaryTime(
+    const digits = asBinaryTime(
       {hours: 23, minutes: 59, seconds: 59},
       BinaryTimeMode.DOUBLE_DIGITS,
     );
-    expect(time.digits).toRepresentBinary([
+    expect(digits).toRepresentBinary([
       '  10',
       '0011',
       ' 101',
