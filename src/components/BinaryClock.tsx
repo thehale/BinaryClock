@@ -28,23 +28,90 @@ const DEFAULTS = {
 
 const BinaryClock: React.FC<BinaryClockProps> = args => {
   const props = {...DEFAULTS, ...args};
-  const digits = useBinaryTime(
-    props.orientation === Orientation.Landscape
-      ? BinaryTimeMode.DOUBLE_DIGITS
-      : BinaryTimeMode.SINGLE_DIGITS,
-  );
+  if (props.orientation === Orientation.Landscape) {
+    return <LandscapeClock {...props} />;
+  } else if (props.orientation === Orientation.Portrait) {
+    return <PortraitClock {...props} />;
+  } else {
+    throw new Error(`Invalid orientation: ${props.orientation}`);
+  }
+};
 
+const LandscapeClock: React.FC<BinaryClockProps> = props => {
+  const digits = useBinaryTime(BinaryTimeMode.DOUBLE_DIGITS);
   return (
     <View style={styles.binaryClock}>
-      {digits.map((digit, idx) => (
-        <BinaryDigit
-          key={idx}
-          digit={digit}
-          brightness={props.brightness}
-          roundness={props.roundness}
-          showHints={props.showHints}
-        />
-      ))}
+      <BinaryDigit
+        key="hours-tens"
+        digit={digits[0]}
+        brightness={props.brightness}
+        roundness={props.roundness}
+        showHints={props.showHints}
+      />
+      <BinaryDigit
+        key="hours-ones"
+        digit={digits[1]}
+        brightness={props.brightness}
+        roundness={props.roundness}
+        showHints={props.showHints}
+      />
+      <BinaryDigit
+        key="minutes-tens"
+        digit={digits[2]}
+        brightness={props.brightness}
+        roundness={props.roundness}
+        showHints={props.showHints}
+      />
+      <BinaryDigit
+        key="minutes-ones"
+        digit={digits[3]}
+        brightness={props.brightness}
+        roundness={props.roundness}
+        showHints={props.showHints}
+      />
+      <BinaryDigit
+        key="seconds-tens"
+        digit={digits[4]}
+        brightness={props.brightness}
+        roundness={props.roundness}
+        showHints={props.showHints}
+      />
+      <BinaryDigit
+        key="seconds-ones"
+        digit={digits[5]}
+        brightness={props.brightness}
+        roundness={props.roundness}
+        showHints={props.showHints}
+      />
+    </View>
+  );
+};
+
+const PortraitClock: React.FC<BinaryClockProps> = props => {
+  const digits = useBinaryTime(BinaryTimeMode.SINGLE_DIGITS);
+  return (
+    <View style={styles.binaryClock}>
+      <BinaryDigit
+        key="hours"
+        digit={digits[0]}
+        brightness={props.brightness}
+        roundness={props.roundness}
+        showHints={props.showHints}
+      />
+      <BinaryDigit
+        key="minutes"
+        digit={digits[1]}
+        brightness={props.brightness}
+        roundness={props.roundness}
+        showHints={props.showHints}
+      />
+      <BinaryDigit
+        key="seconds"
+        digit={digits[2]}
+        brightness={props.brightness}
+        roundness={props.roundness}
+        showHints={props.showHints}
+      />
     </View>
   );
 };
