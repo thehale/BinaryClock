@@ -129,6 +129,24 @@ Finally push up your changes to your fork and open a Pull Request (PR) back into
 - After everything looks great, your PR will be merged into the `main` branch of
   `BinaryClock`!
 
+## Credential Management in CI/CD
+
+### `secrets.MATCH_GIT_BASIC_AUTHORIZATION`
+
+This secret allows [Fastlane to clone the private
+repository](https://docs.fastlane.tools/actions/match/#git-storage-on-github)
+storing the iOS signing certificates and provisioning profiles.
+
+Configuring the secret takes two steps:
+
+1. Create a fine-grained personal access token with **read-only** permissions to
+   **Content** (which will auto-imply read permissions on **Metadata**) to the
+   private repository containing your signing certs and provisioning profiles. I
+   recommend a 1 year token expiration.
+2. Base64 encode your username and token into an authorization header, and set
+   the resulting value as the GitHub Actions secret.
+    - e.g. `echo -n your_github_username:your_personal_access_token | base64`
+
 ## Other Notes
 
 ### Common Error Messages / Solutions
