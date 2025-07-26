@@ -6,7 +6,7 @@
 
 import BinaryClockScreen from './src/pages/BinaryClockScreen';
 import BootSplash from 'react-native-bootsplash';
-import KeepAwake from '@sayem314/react-native-keep-awake';
+import { KeepAwake } from '@thehale/react-native-keep-awake';
 import React from 'react';
 import { StatusBar } from 'react-native';
 
