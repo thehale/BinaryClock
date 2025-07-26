@@ -58,6 +58,7 @@ platform :ios do
       "  - [ ] `npm run pods` - Install native dependencies",
       "  - [ ] `fastlane ios certificates` - Install certificates/provisioning profiles",
       "  - [ ] `security unlock-keychain` - Allow pulling private signing keys from the keychain (e.g. in SSH sessions)",
+      "  - [ ] Try running this command directly on the Mac (not over SSH) to handle GUI prompts"
     ]
     raise exception
   end
