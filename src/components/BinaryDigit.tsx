@@ -4,11 +4,11 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import {StyleSheet, View} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import BinaryDot from './BinaryDot';
 import React from 'react';
-import {type BinaryDigit as BinaryDigitType} from '../utils/binaryTime';
+import { type BinaryDigit as BinaryDigitType } from '../utils/binaryTime';
 
 interface BinaryDigitProps {
   digit: BinaryDigitType;
@@ -24,7 +24,7 @@ const DEFAULTS = {
 };
 
 const BinaryDigit: React.FC<BinaryDigitProps> = args => {
-  const props = {...DEFAULTS, ...args};
+  const props = { ...DEFAULTS, ...args };
   if (props.digit.bits.length === 4) {
     return <FourDigit {...props} />;
   } else if (props.digit.bits.length === 6) {
@@ -47,6 +47,9 @@ const FourDigit: React.FC<BinaryDigitProps> = props => {
         <BinaryDot bit={props.digit.bits[1]} {...settings} />
         <BinaryDot bit={props.digit.bits[2]} {...settings} />
         <BinaryDot bit={props.digit.bits[3]} {...settings} />
+        {props.showHints && (
+          <Text style={styles.hint}>{props.digit.value}</Text>
+        )}
       </View>
     </View>
   );
@@ -67,6 +70,9 @@ const SixDigit: React.FC<BinaryDigitProps> = props => {
         <BinaryDot bit={props.digit.bits[3]} {...settings} />
         <BinaryDot bit={props.digit.bits[4]} {...settings} />
         <BinaryDot bit={props.digit.bits[5]} {...settings} />
+        {props.showHints && (
+          <Text style={styles.hint}>{props.digit.value}</Text>
+        )}
       </View>
     </View>
   );
