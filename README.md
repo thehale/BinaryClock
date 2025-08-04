@@ -1,3 +1,5 @@
+<div align="center">
+
 # Binary Clock
 
 A nerdy way to tell time on Android/iOS 🕓
@@ -10,6 +12,11 @@ A nerdy way to tell time on Android/iOS 🕓
 
 ![A gif showing the Binary Clock running on both an Android and iOS
 simulator](./docs/binary_clock_demo.gif)
+
+[![Download Binary Clock from the Google Play Store](docs/assets/playstore.png)](https://play.google.com/store/apps/details?id=dev.jhale.binaryclock)
+[![Download Binary Clock from the Apple App Store](docs/assets/appstore.png)](https://apps.apple.com/us/app/binary-clock-by-jhale-dev/id6448813967?uo=4)
+
+</div>
 
 ## How it works
 
