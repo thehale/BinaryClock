@@ -269,11 +269,9 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = BinaryClock/BinaryClock.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 113;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = XLMP575759;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 117;
+				DEVELOPMENT_TEAM = XLMP575759;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = BinaryClock/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Binary Clock";
@@ -283,7 +281,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.2.3;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -292,7 +290,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.jhale.BinaryClock;
 				PRODUCT_NAME = BinaryClock;
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development dev.jhale.BinaryClock";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -309,7 +306,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 113;
+				CURRENT_PROJECT_VERSION = 117;
 				DEVELOPMENT_TEAM = XLMP575759;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = XLMP575759;
 				INFOPLIST_FILE = BinaryClock/Info.plist;
@@ -320,7 +317,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.2.3;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
