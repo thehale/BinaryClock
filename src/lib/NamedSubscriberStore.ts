@@ -44,12 +44,12 @@ export class NamedSubscriberStore<State extends Record<string, any>> {
 	}
 
 	/** Assesses if the setting can be assigned the value */
-	protected isValidUpdate<S extends keyof State>(setting: S, value: State[S]): boolean {
+	protected isValidUpdate<S extends keyof State>(_setting: S, _value: State[S]): boolean {
 		return true
 	}
 	
 	/** Allows child classes to trigger additional effects after successful updates (e.g. sync external stores) */
-	protected onUpdate<S extends keyof State>(setting: S, value: State[S]) { }
+	protected onUpdate<S extends keyof State>(_setting: S, _value: State[S]) { }
 
 	getSnapshot(): State {
 		if (this.snapshot === null) this.snapshot = structuredClone(this.state)

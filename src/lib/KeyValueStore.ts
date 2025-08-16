@@ -11,7 +11,7 @@ const setters = new Map<string, DebouncedFunc<(value: string) => Promise<void>>>
 
 async function put(key: string, value: string): Promise<void> {
 	if (!setters.has(key)) {
-		const setter = async (value: string) => await DefaultPreference.set(key, value);
+		const setter = async (v: string) => await DefaultPreference.set(key, v);
 		setters.set(key, debounce(setter, 1000, { trailing: true }));
 	}
 	return setters.get(key)!(value);
