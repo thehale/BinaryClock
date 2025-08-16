@@ -2,16 +2,18 @@
 //
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this
-// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 import BinaryClockScreen from './pages/BinaryClockScreen';
-import BootSplash from 'react-native-bootsplash';
 import { KeepAwake } from '@thehale/react-native-keep-awake';
+import { useState } from 'react';
 import { StatusBar } from 'react-native';
+import { init } from './init';
 
-const App = () => {
-  BootSplash.hide({fade: true});
-  return (
+function App() {
+  const [initialized, setInitialized] = useState(false);
+  init().then(() => setInitialized(true))
+  return initialized && (
     <>
       <StatusBar hidden={true} />
       <KeepAwake />
