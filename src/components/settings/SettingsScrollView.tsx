@@ -16,6 +16,12 @@ export default function SettingsScrollView() {
   const roundnessString = `${Math.round(settings.roundness * 100)}%`;
   return (
     <ScrollView contentContainerStyle={styles.contentContainer}>
+      <SettingBoolean
+        title="Show Hints"
+        subtitle="Learn how to read a binary clock"
+        onValueChange={value => updateSetting({ showHints: value })}
+        initialValue={settings.showHints}
+      />
       <SettingRange
         title="Brightness"
         initialValue={settings.brightness}
@@ -27,12 +33,6 @@ export default function SettingsScrollView() {
         initialValue={settings.roundness}
         onValueChange={value => updateSetting({ roundness: value })}
         caption={roundnessString}
-      />
-      <SettingBoolean
-        title="Show Hints"
-        subtitle="Show each dot's value."
-        onValueChange={value => updateSetting({ showHints: value })}
-        initialValue={settings.showHints}
       />
     </ScrollView>
   )
