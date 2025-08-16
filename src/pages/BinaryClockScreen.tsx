@@ -5,12 +5,6 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import {
-  BinaryClockSettings,
-  useBrightness,
-  useRoundness,
-  useShowHints,
-} from '../utils/BinaryClockSettings';
-import {
   Pressable,
   SafeAreaView,
   ScrollView,
@@ -24,6 +18,7 @@ import BinaryClock from '../components/BinaryClock';
 import Orientation from '../utils/orientation';
 import SettingBoolean from '../components/settings/SettingBoolean';
 import SettingRange from '../components/settings/SettingRange';
+import { useSettings } from '../settings/useSettings';
 
 const BinaryClockScreen: React.FC = () => {
   const [showSettings, setShowSettings] = useState<{
@@ -35,11 +30,9 @@ const BinaryClockScreen: React.FC = () => {
     [showSettings],
   );
   const {height, width} = useWindowDimensions();
-  const [brightness, setBrightness] = useBrightness();
-  const brightnessString = `${Math.round(brightness * 100)}%`;
-  const [roundness, setRoundness] = useRoundness();
-  const roundnessString = `${Math.round(roundness * 100)}%`;
-  const [showHints, setShowHints] = useShowHints();
+  const [settings, updateSetting] = useSettings('BinaryClockScreen');
+  const brightnessString = `${Math.round(settings.brightness * 100)}%`;
+  const roundnessString = `${Math.round(settings.roundness * 100)}%`;
   return (
     <SafeAreaView>
       <View
@@ -51,9 +44,9 @@ const BinaryClockScreen: React.FC = () => {
         <Pressable style={styles.clockPreview} onPress={toggleSettings}>
           <Clock
             lastAspectUpdate={showSettings.updated}
-            brightness={brightness}
-            roundness={roundness}
-            showHints={showHints}
+            brightness={settings.brightness}
+            roundness={settings.roundness}
+            showHints={settings.showHints}
           />
         </Pressable>
         {showSettings.value && (
@@ -62,25 +55,21 @@ const BinaryClockScreen: React.FC = () => {
             contentContainerStyle={styles.settingsContentContainer}>
             <SettingRange
               title="Brightness"
-              initialValue={brightness}
-              onValueChange={setBrightness}
-              onValueSet={BinaryClockSettings.setBrightness}
+              initialValue={settings.brightness}
+              onValueChange={value => updateSetting({brightness: value})}
               caption={brightnessString}
             />
             <SettingRange
               title="Roundness"
-              initialValue={roundness}
-              onValueChange={setRoundness}
-              onValueSet={BinaryClockSettings.setRoundness}
+              initialValue={settings.roundness}
+              onValueChange={value => updateSetting({roundness: value})}
               caption={roundnessString}
             />
             <SettingBoolean
               title="Show Hints"
               subtitle="Show each dot's value."
-              onValueChange={setShowHints}
-              // onValueSet={() => {}}
-              onValueSet={BinaryClockSettings.setShowHints}
-              initialValue={showHints}
+              onValueChange={value => updateSetting({showHints: value})}
+              initialValue={settings.showHints}
             />
           </ScrollView>
         )}
