@@ -23,7 +23,7 @@ function BinaryClockScreen() {
   const flexStyle = { flexDirection: height > width ? 'column' : 'row' } as const
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.safeArea}>
       <View style={[styles.container, flexStyle]}>
         <Pressable style={styles.clock} onPress={toggleSettingsVisibility}>
           <AutoOrientingClock lastAspectUpdate={settingsVisibility.updated} />
@@ -51,6 +51,7 @@ function useSettingsVisibility() {
 }
 
 const styles = StyleSheet.create({
+  safeArea: { backgroundColor: 'black' },
   container: { height: '100%' },
   clock: { flex: 5 },
   settings: { flex: 2 },
