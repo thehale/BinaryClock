@@ -20,8 +20,9 @@ export async function initSettings() {
 export function useSettings(callerName: string = 'UnknownCaller') {
 	const subscribe = useCallback<Parameters<typeof useSyncExternalStore>[0]>((listener) => store.subscribe(callerName, listener), [store, callerName]);
 	const getSnapshot = useCallback(() => store.getSnapshot(), [store]);
+	const resetToDefaults = useCallback(() => store.reset(), [store])
 	const snapshot = useSyncExternalStore(subscribe, getSnapshot);
 	console.log(`useSettings called by ${callerName}, current settings:`, snapshot);
 	const update = (updates: Partial<typeof snapshot>) => store.update(updates);
-	return [snapshot, update] as const;
+	return [snapshot, update, resetToDefaults] as const;
 }

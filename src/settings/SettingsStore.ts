@@ -15,16 +15,17 @@ export interface Setting<Value extends number | boolean> {
 
 export type Settings = Record<string, Setting<number> | Setting<boolean>>;
 
-export class SettingsStore<S extends Settings> extends NamedSubscriberStore<{[K in keyof S]: S[K]['default']}> {
+export class SettingsStore<S extends Settings> extends NamedSubscriberStore<{ [K in keyof S]: S[K]['default'] }> {
 	settings: S;
 	constructor(settings: S) {
-		const defaults = Object.fromEntries(
-			Object.entries(settings).map(([key, value]) => [key, value.default])
-		)
-		// @ts-expect-error Object.fromEntries is type-lossy
-		super(defaults)
+		super(toDefaults(settings))
 		this.settings = settings;
 	}
+	
+	reset() {
+		this.update(toDefaults(this.settings))
+	}
+
 	protected isValidUpdate<K extends keyof S>(setting: K, value: S[K]["default"]): boolean {
 		// @ts-expect-error TypeScript messed up while following all this indirection
 		return this.settings[setting].validate(value);
@@ -33,4 +34,11 @@ export class SettingsStore<S extends Settings> extends NamedSubscriberStore<{[K 
 		// @ts-expect-error TypeScript messed up while following all this indirection
 		this.settings[setting].update(value);
 	}
+}
+
+function toDefaults<S extends Settings>(settings: S): { [K in keyof S]: S[K]['default'] } {
+	// @ts-expect-error Object.fromEntries is type-lossy
+	return Object.fromEntries(
+		Object.entries(settings).map(([key, value]) => [key, value.default])
+	)
 }

@@ -4,14 +4,14 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import { ScrollView, StyleSheet } from "react-native";
+import { Button, ScrollView, StyleSheet } from "react-native";
 import { useSettings } from "../../settings/useSettings";
 import SettingRange from "./SettingRange";
 import SettingBoolean from "./SettingBoolean";
 
 
 export default function SettingsScrollView() {
-  const [settings, updateSettings] = useSettings('SettingsScrollView');
+  const [settings, updateSettings, resetToDefaults] = useSettings('SettingsScrollView');
   const brightnessString = `${Math.round(settings.brightness * 100)}%`;
   const roundnessString = `${Math.round(settings.roundness * 100)}%`;
   return (
@@ -34,6 +34,7 @@ export default function SettingsScrollView() {
         onValueChange={value => updateSettings({ roundness: value })}
         caption={roundnessString}
       />
+      <Button title="Reset" onPress={resetToDefaults}/>
     </ScrollView>
   )
 }
