@@ -43,5 +43,6 @@ const styles = StyleSheet.create({
   contentContainer: {
     padding: 20,
     justifyContent: 'flex-start',
+    backgroundColor: '#222'
   },
 })
