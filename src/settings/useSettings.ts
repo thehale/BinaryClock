@@ -17,7 +17,7 @@ export async function initSettings() {
 	store.update(Object.fromEntries(entries));
 }
 
-export function useSettings(callerName: string = 'settings') {
+export function useSettings(callerName: string = 'UnknownCaller') {
 	const subscribe = useCallback<Parameters<typeof useSyncExternalStore>[0]>((listener) => store.subscribe(callerName, listener), [store, callerName]);
 	const getSnapshot = useCallback(() => store.getSnapshot(), [store]);
 	const snapshot = useSyncExternalStore(subscribe, getSnapshot);
