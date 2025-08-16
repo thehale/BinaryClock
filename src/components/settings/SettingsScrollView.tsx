@@ -11,7 +11,7 @@ import SettingBoolean from "./SettingBoolean";
 
 
 export default function SettingsScrollView() {
-  const [settings, updateSetting] = useSettings('SettingsScrollView');
+  const [settings, updateSettings] = useSettings('SettingsScrollView');
   const brightnessString = `${Math.round(settings.brightness * 100)}%`;
   const roundnessString = `${Math.round(settings.roundness * 100)}%`;
   return (
@@ -19,19 +19,19 @@ export default function SettingsScrollView() {
       <SettingBoolean
         title="Show Hints"
         subtitle="Learn how to read a binary clock"
-        onValueChange={value => updateSetting({ showHints: value })}
+        onValueChange={value => updateSettings({ showHints: value })}
         initialValue={settings.showHints}
       />
       <SettingRange
         title="Brightness"
         initialValue={settings.brightness}
-        onValueChange={value => updateSetting({ brightness: value })}
+        onValueChange={value => updateSettings({ brightness: value })}
         caption={brightnessString}
       />
       <SettingRange
         title="Roundness"
         initialValue={settings.roundness}
-        onValueChange={value => updateSetting({ roundness: value })}
+        onValueChange={value => updateSettings({ roundness: value })}
         caption={roundnessString}
       />
     </ScrollView>
