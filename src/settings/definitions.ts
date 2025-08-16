@@ -26,7 +26,7 @@ export const settings = {
 
 	/** `true` shows the value of each dot, `false` does not. */
 	showHints: {
-		default: true as boolean,
+		default: false as boolean,
 		validate: (value: boolean) => typeof value === 'boolean',
 		update: async (value: boolean) => KVStore.put('showHints', value.toString()),
 		read: async () => (await KVStore.read('showHints', 'false')) === 'true'
