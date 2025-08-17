@@ -12,6 +12,7 @@
     "icons": "npx react-native-svg-app-icon",
     "splash": "react-native-bootsplash generate splash.svg --platforms=android,ios --background=000000 --logo-width=100 --flavor=main && rm -rf assets",
     "lint": "eslint .",
+    "clean": "npx react-native-clean-project",
     "start": "react-native start",
     "test": "jest"
   },
