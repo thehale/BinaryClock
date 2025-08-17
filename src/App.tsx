@@ -9,16 +9,17 @@ import { KeepAwake } from '@thehale/react-native-keep-awake';
 import { useState } from 'react';
 import { StatusBar } from 'react-native';
 import { init } from './init';
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 function App() {
   const [initialized, setInitialized] = useState(false);
   init().then(() => setInitialized(true))
   return initialized && (
-    <>
+    <SafeAreaProvider>
       <StatusBar hidden={true} />
       <KeepAwake />
       <BinaryClockScreen />
-    </>
+    </SafeAreaProvider>
   );
 };
 

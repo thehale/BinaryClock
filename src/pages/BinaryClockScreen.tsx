@@ -4,14 +4,9 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import {
-  Pressable,
-  SafeAreaView,
-  StyleSheet,
-  View,
-  useWindowDimensions
-} from 'react-native';
+import { Pressable, StyleSheet, View, useWindowDimensions } from 'react-native';
 import React, { useCallback, useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import AutoOrientingClock from '../components/AutoOrientingClock';
 import SettingsScrollView from '../components/settings/SettingsScrollView';
