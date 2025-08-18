@@ -8,6 +8,15 @@ import DefaultPreference from 'react-native-default-preference';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default async function migrate() {
+	const migrationDate = await DefaultPreference.get("migrationDate");
+
+	if (migrationDate === null || migrationDate === undefined) {
+		await executeMigration();
+		await DefaultPreference.set("migrationDate", new Date().toISOString());
+	}
+}
+
+async function executeMigration() {
 	const brightness = (await DefaultPreference.get("brightness")) ?? "1"
 	const roundness = (await DefaultPreference.get("roundness")) ?? "1"
 	const showHints = (await DefaultPreference.get("showHints")) ?? "false"
