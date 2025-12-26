@@ -9,10 +9,16 @@ import { useSettings } from "../settings/useSettings";
 import Orientation from "../utils/orientation";
 import { StyleSheet, View } from "react-native";
 import BinaryClock from "./BinaryClock";
+import { useTheme } from "../theme/useTheme";
+import type { ClockTheme } from "../theme/types";
 
 
 export default function AutoOrientingClock({ lastAspectUpdate }: { lastAspectUpdate: Date }) {
   const [settings] = useSettings('AutoOrientingClock');
+
+  const { theme } = useTheme();
+  const styles = createStyles(theme);
+
   const [layout, setLayout] = useState({
     height: 0,
     width: 0,
@@ -47,9 +53,8 @@ export default function AutoOrientingClock({ lastAspectUpdate }: { lastAspectUpd
   );
 }
 
-const styles = StyleSheet.create({
-  blankClock: {
-    height: '100%',
-    backgroundColor: 'black',
-  }
-})
+function createStyles(theme: ClockTheme) {
+  return StyleSheet.create({
+    blankClock: { height: '100%', backgroundColor: theme.colors.background }
+  });
+}

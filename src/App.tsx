@@ -7,9 +7,10 @@
 import BinaryClockScreen from './pages/BinaryClockScreen';
 import { KeepAwake } from '@thehale/react-native-keep-awake';
 import { useState } from 'react';
-import { StatusBar, StyleSheet, View } from 'react-native';
+import { StatusBar, View } from 'react-native';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { init } from './init';
+import { useTheme } from './theme/useTheme';
 
 function App() {
   const [initialized, setInitialized] = useState(false);
@@ -33,13 +34,13 @@ function SafeInsetView({ children }: { children: React.ReactNode }) {
     paddingLeft: insets.left,
     paddingRight: insets.right,
   }
-  return <View style={[styles.safeArea, insetStyles]}>
+
+  const { theme } = useTheme();
+  const themeStyles = { backgroundColor: theme.colors.background };
+
+  return <View style={[insetStyles, themeStyles]}>
     {children}
   </View>;
 }
-
-const styles = StyleSheet.create({
-  safeArea: { backgroundColor: 'black' },
-})
 
 export default App;

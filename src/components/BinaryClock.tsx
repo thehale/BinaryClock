@@ -4,13 +4,15 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import {BinaryTimeMode} from '../utils/binaryTime';
-import {StyleSheet, View} from 'react-native';
+import { BinaryTimeMode } from '../utils/binaryTime';
+import { StyleSheet, View } from 'react-native';
 
 import BinaryDigit from './BinaryDigit';
 import Orientation from '../utils/orientation';
 import React from 'react';
 import { useBinaryTime } from '../utils/useBinaryTime';
+import { ClockTheme } from '../theme/types';
+import { useTheme } from '../theme/useTheme';
 
 interface BinaryClockProps {
   orientation?: Orientation;
@@ -27,7 +29,7 @@ const DEFAULTS = {
 };
 
 const BinaryClock: React.FC<BinaryClockProps> = args => {
-  const props = {...DEFAULTS, ...args};
+  const props = { ...DEFAULTS, ...args };
   if (props.orientation === Orientation.Landscape) {
     return <LandscapeClock {...props} />;
   } else if (props.orientation === Orientation.Portrait) {
@@ -38,6 +40,9 @@ const BinaryClock: React.FC<BinaryClockProps> = args => {
 };
 
 const LandscapeClock: React.FC<BinaryClockProps> = props => {
+  const { theme } = useTheme();
+  const styles = createStyles(theme);
+
   const digits = useBinaryTime(BinaryTimeMode.DOUBLE_DIGITS);
   return (
     <View style={styles.binaryClock}>
@@ -88,6 +93,9 @@ const LandscapeClock: React.FC<BinaryClockProps> = props => {
 };
 
 const PortraitClock: React.FC<BinaryClockProps> = props => {
+  const { theme } = useTheme();
+  const styles = createStyles(theme);
+
   const digits = useBinaryTime(BinaryTimeMode.SINGLE_DIGITS);
   return (
     <View style={styles.binaryClock}>
@@ -116,14 +124,16 @@ const PortraitClock: React.FC<BinaryClockProps> = props => {
   );
 };
 
-const styles = StyleSheet.create({
-  binaryClock: {
-    flexDirection: 'row',
-    paddingHorizontal: '5%',
-    height: '100%',
-    backgroundColor: 'black',
-    alignItems: 'center',
-  },
-});
+function createStyles(theme: ClockTheme) {
+  return StyleSheet.create({
+    binaryClock: {
+      flexDirection: 'row',
+      paddingHorizontal: '5%',
+      height: '100%',
+      backgroundColor: theme.colors.background,
+      alignItems: 'center',
+    },
+  });
+}
 
 export default BinaryClock;

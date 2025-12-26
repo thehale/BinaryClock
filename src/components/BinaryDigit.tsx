@@ -9,6 +9,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import BinaryDot from './BinaryDot';
 import React from 'react';
 import { type BinaryDigit as BinaryDigitType } from '../utils/binaryTime';
+import { useTheme } from '../theme/useTheme';
+import { ClockTheme } from '../theme/types';
 
 interface BinaryDigitProps {
   digit: BinaryDigitType;
@@ -35,11 +37,15 @@ const BinaryDigit: React.FC<BinaryDigitProps> = args => {
 };
 
 const FourDigit: React.FC<BinaryDigitProps> = props => {
+  const { theme } = useTheme();
+  const styles = createStyles(theme);
+
   const settings = {
     brightness: props.brightness,
     roundness: props.roundness,
     showHints: props.showHints,
   };
+
   return (
     <View style={styles.pair}>
       <View style={styles.digit}>
@@ -56,11 +62,15 @@ const FourDigit: React.FC<BinaryDigitProps> = props => {
 };
 
 const SixDigit: React.FC<BinaryDigitProps> = props => {
+  const { theme } = useTheme();
+  const styles = createStyles(theme);
+
   const settings = {
     brightness: props.brightness,
     roundness: props.roundness,
     showHints: props.showHints,
   };
+
   return (
     <View style={styles.pair}>
       <View style={styles.digit}>
@@ -78,22 +88,24 @@ const SixDigit: React.FC<BinaryDigitProps> = props => {
   );
 };
 
-const styles = StyleSheet.create({
-  digit: {
-    alignItems: 'center',
-    flex: 1,
-  },
-  pair: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: '2%',
-    flex: 1,
-  },
-  hint: {
-    color: 'white',
-    fontSize: 20,
-    opacity: 0.25,
-  },
-});
+function createStyles(theme: ClockTheme) {
+  return StyleSheet.create({
+    digit: {
+      alignItems: 'center',
+      flex: 1,
+    },
+    pair: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      padding: '2%',
+      flex: 1,
+    },
+    hint: {
+      color: theme.colors.onBackground,
+      fontSize: 20,
+      fontWeight: "bold",
+    },
+  });
+}
 
 export default BinaryDigit;
