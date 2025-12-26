@@ -24,7 +24,7 @@ export interface BinaryDigit {
   value: number;
 }
 
-type BinaryTime = BinaryDigit[];
+export type BinaryTime = BinaryDigit[];
 
 interface Time {
   hours: number;
