@@ -6,7 +6,6 @@
 
 import {
   Pressable,
-  SafeAreaView,
   StyleSheet,
   View,
   useWindowDimensions
@@ -23,18 +22,16 @@ function BinaryClockScreen() {
   const flexStyle = { flexDirection: height > width ? 'column' : 'row' } as const
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <View style={[styles.container, flexStyle]}>
-        <Pressable style={styles.clock} onPress={toggleSettingsVisibility}>
-          <AutoOrientingClock lastAspectUpdate={settingsVisibility.updated} />
-        </Pressable>
-        {settingsVisibility.value && (
-          <View style={styles.settings}>
-            <SettingsScrollView />
-          </View>
-        )}
-      </View>
-    </SafeAreaView>
+    <View style={[styles.container, flexStyle]}>
+      <Pressable style={styles.clock} onPress={toggleSettingsVisibility}>
+        <AutoOrientingClock lastAspectUpdate={settingsVisibility.updated} />
+      </Pressable>
+      {settingsVisibility.value && (
+        <View style={styles.settings}>
+          <SettingsScrollView />
+        </View>
+      )}
+    </View>
   );
 };
 
@@ -51,7 +48,6 @@ function useSettingsVisibility() {
 }
 
 const styles = StyleSheet.create({
-  safeArea: { backgroundColor: 'black' },
   container: { height: '100%' },
   clock: { flex: 5 },
   settings: { flex: 2 },
