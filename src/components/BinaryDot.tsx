@@ -10,6 +10,7 @@ import { BinaryBit } from '../utils/binaryTime';
 import React from 'react';
 import { useTheme } from '../theme/useTheme';
 import { ClockTheme } from '../theme/types';
+import { DEFAULT_SETTINGS } from '../settings/definitions';
 
 interface BinaryDotProps {
   bit: BinaryBit;
@@ -19,9 +20,9 @@ interface BinaryDotProps {
 }
 
 const DEFAULTS = {
-  brightness: 1,
-  roundness: 1,
-  showHints: false,
+  brightness: DEFAULT_SETTINGS.brightness,
+  roundness: DEFAULT_SETTINGS.roundness,
+  showHints: DEFAULT_SETTINGS.showHints,
 };
 
 const FULL_ROUNDNESS_RADIUS = 30;

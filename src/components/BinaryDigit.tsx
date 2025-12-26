@@ -11,6 +11,7 @@ import React from 'react';
 import { type BinaryDigit as BinaryDigitType } from '../utils/binaryTime';
 import { useTheme } from '../theme/useTheme';
 import { ClockTheme } from '../theme/types';
+import { DEFAULT_SETTINGS } from '../settings/definitions';
 
 interface BinaryDigitProps {
   digit: BinaryDigitType;
@@ -20,9 +21,9 @@ interface BinaryDigitProps {
 }
 
 const DEFAULTS = {
-  brightness: 1,
-  roundness: 1,
-  showHints: false,
+  brightness: DEFAULT_SETTINGS.brightness,
+  roundness: DEFAULT_SETTINGS.roundness,
+  showHints: DEFAULT_SETTINGS.showHints,
 };
 
 const BinaryDigit: React.FC<BinaryDigitProps> = args => {

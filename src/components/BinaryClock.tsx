@@ -13,6 +13,7 @@ import React from 'react';
 import { useBinaryTime } from '../utils/useBinaryTime';
 import { ClockTheme } from '../theme/types';
 import { useTheme } from '../theme/useTheme';
+import { DEFAULT_SETTINGS } from '../settings/definitions';
 
 interface BinaryClockProps {
   orientation?: Orientation;
@@ -23,9 +24,9 @@ interface BinaryClockProps {
 
 const DEFAULTS = {
   orientation: Orientation.Landscape,
-  brightness: 1,
-  roundness: 1,
-  showHints: false,
+  brightness: DEFAULT_SETTINGS.brightness,
+  roundness: DEFAULT_SETTINGS.roundness,
+  showHints: DEFAULT_SETTINGS.showHints,
 };
 
 const BinaryClock: React.FC<BinaryClockProps> = args => {
