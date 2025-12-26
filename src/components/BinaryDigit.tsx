@@ -81,7 +81,7 @@ const SixDigit: React.FC<BinaryDigitProps> = props => {
         <BinaryDot bit={props.digit.bits[4]} {...settings} />
         <BinaryDot bit={props.digit.bits[5]} {...settings} />
         {props.showHints && (
-          <Text style={styles.hint}>{props.digit.value}</Text>
+          <Text style={styles.hint}>{String(props.digit.value).padStart(2, '0')}</Text>
         )}
       </View>
     </View>
