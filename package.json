@@ -1,6 +1,6 @@
 {
   "name": "BinaryClock",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "private": true,
   "scripts": {
     "env": "npx dotenv-cli -e ./fastlane/.env",
