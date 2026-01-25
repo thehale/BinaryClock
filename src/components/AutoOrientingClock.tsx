@@ -4,57 +4,35 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import { useState } from "react";
 import { useSettings } from "../settings/useSettings";
 import Orientation from "../utils/orientation";
-import { StyleSheet, View } from "react-native";
 import BinaryClock from "./BinaryClock";
-import { useTheme } from "../theme/useTheme";
-import type { ClockTheme } from "../theme/types";
+import { Measured, useMeasurements } from "react-native-expressive";
 
-
-export default function AutoOrientingClock({ lastAspectUpdate }: { lastAspectUpdate: Date }) {
-  const [settings] = useSettings('AutoOrientingClock');
-
-  const { theme } = useTheme();
-  const styles = createStyles(theme);
-
-  const [layout, setLayout] = useState({
-    height: 0,
-    width: 0,
-    date: new Date(0),
-  });
-  const showClock =
-    layout.height > 0 &&
-    layout.width > 0 &&
-    layout.date.getTime() > lastAspectUpdate.getTime();
-  const orientation =
-    layout.height > layout.width ? Orientation.Portrait : Orientation.Landscape;
-  return (
-    <View
-      onLayout={({ nativeEvent }) => {
-        setLayout({
-          height: nativeEvent.layout.height,
-          width: nativeEvent.layout.width,
-          date: new Date(),
-        });
-      }}>
-      {!showClock ? (
-        <View style={styles.blankClock} />
-      ) : (
-        <BinaryClock
-          orientation={orientation}
-          brightness={settings.brightness}
-          roundness={settings.roundness}
-          showHints={settings.showHints}
-        />
-      )}
-    </View>
-  );
+interface AutoOrientingClockProps {
+  lastAspectUpdate: number;
 }
 
-function createStyles(theme: ClockTheme) {
-  return StyleSheet.create({
-    blankClock: { height: '100%', backgroundColor: theme.colors.background }
-  });
+export default function AutoOrientingClock(props: AutoOrientingClockProps) {
+  return (
+    <Measured>
+      <Content {...props} />
+    </Measured>
+  )
+}
+
+function Content(props: AutoOrientingClockProps) {
+  const m = useMeasurements();
+  const orientation = m.height > m.width ? Orientation.Portrait : Orientation.Landscape;
+  const showClock = m.timestamp > props.lastAspectUpdate;
+
+  const [settings] = useSettings();
+  return (
+    showClock && <BinaryClock
+      orientation={orientation}
+      brightness={settings.brightness}
+      roundness={settings.roundness}
+      showHints={settings.showHints}
+    />
+  )
 }

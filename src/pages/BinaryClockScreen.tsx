@@ -36,12 +36,11 @@ function BinaryClockScreen() {
 };
 
 function useSettingsVisibility() {
-  const [visibility, setVisibility] = useState<{
-    value: boolean;
-    updated: Date;
-  }>({ value: false, updated: new Date() });
+  const [visibility, setVisibility] = useState<{ value: boolean, updated: number}>(
+    { value: false, updated: Date.now() }
+  );
   const toggleVisibility = useCallback(
-    () => setVisibility({ value: !visibility.value, updated: new Date() }),
+    () => setVisibility({ value: !visibility.value, updated: Date.now() }),
     [visibility],
   );
   return [visibility, toggleVisibility] as const;
