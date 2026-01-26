@@ -4,7 +4,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native';
 
 import { BinaryBit } from '../utils/binaryTime';
 import React from 'react';
@@ -16,16 +16,16 @@ interface BinaryDotProps {
   bit: BinaryBit;
   brightness?: number;
   roundness?: number;
+  fill?: number;
   showHints?: boolean;
 }
 
 const DEFAULTS = {
   brightness: DEFAULT_SETTINGS.brightness,
   roundness: DEFAULT_SETTINGS.roundness,
+  fill: DEFAULT_SETTINGS.fill,
   showHints: DEFAULT_SETTINGS.showHints,
 };
-
-const FULL_ROUNDNESS_RADIUS = 30;
 
 const BinaryDot: React.FC<BinaryDotProps> = args => {
   const props = { ...DEFAULTS, ...args };
@@ -34,16 +34,21 @@ const BinaryDot: React.FC<BinaryDotProps> = args => {
 
   let active_modifier = props.bit.active ? 1 : 0.25;
   let visible_modifier = props.bit.visible ? 1 : 0;
-  const overrides = {
+  const dotOverrides: ViewStyle = {
     opacity: props.brightness * active_modifier * visible_modifier,
-    borderRadius: props.roundness * FULL_ROUNDNESS_RADIUS,
+    borderRadius: `${props.roundness * 50}%`,
+    margin: `${(1 - props.fill) * 50}%`,
   };
 
+  const fontOverrides: TextStyle = {
+    fontSize: 40 * props.fill,
+  }
+
   return (
-    <View style={[styles.dot, overrides]}>
+    <View style={[styles.dot, dotOverrides]}>
       {props.showHints && props.bit.value && (
         <View style={styles.hint}>
-          <Text style={styles.hintText}>{props.bit.value}</Text>
+          <Text style={[styles.hintText, fontOverrides]}>{props.bit.value}</Text>
         </View>
       )}
     </View>
@@ -53,11 +58,10 @@ const BinaryDot: React.FC<BinaryDotProps> = args => {
 function createStyles(theme: ClockTheme) {
   return StyleSheet.create({
     dot: {
-      margin: '15%',
       flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
       aspectRatio: 1,
-      maxWidth: 60,
-      maxHeight: 60,
       backgroundColor: theme.colors.dot,
     },
     hint: {
@@ -69,7 +73,6 @@ function createStyles(theme: ClockTheme) {
     },
     hintText: {
       color: theme.colors.onDot,
-      fontSize: 20,
       fontWeight: "bold",
     },
   });

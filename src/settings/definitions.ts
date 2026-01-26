@@ -10,6 +10,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export const DEFAULT_SETTINGS = {
 	brightness: 1,
 	roundness: 1,
+	fill: 0.75,
 	showHints: false,
 }
 
@@ -28,6 +29,14 @@ export const definitions = {
 		validate: (value: number) => value >= 0 && value <= 1,
 		update: async (value: number) => await AsyncStorage.setItem('roundness', value.toString()),
 		read: async () => Number(await AsyncStorage.getItem('roundness') ?? DEFAULT_SETTINGS.roundness)
+	} satisfies Setting<number>,
+	
+	/** `0`% to`1`00% fill (e.g. `0.5` is 50% fill) */
+	fill: {
+		default: DEFAULT_SETTINGS.fill,
+		validate: (value: number) => value >= 0 && value <= 1,
+		update: async (value: number) => await AsyncStorage.setItem('fill', value.toString()),
+		read: async () => Number(await AsyncStorage.getItem('fill') ?? DEFAULT_SETTINGS.fill)
 	} satisfies Setting<number>,
 
 	/** `true` shows the value of each dot, `false` does not. */

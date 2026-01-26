@@ -8,6 +8,7 @@ import { useSettings } from "../settings/useSettings";
 import Orientation from "../utils/orientation";
 import BinaryClock from "./BinaryClock";
 import { Measured, useMeasurements } from "react-native-expressive";
+import { SquaresClock } from "./SquaresClock";
 
 interface AutoOrientingClockProps {
   lastAspectUpdate: number;
@@ -28,10 +29,11 @@ function Content(props: AutoOrientingClockProps) {
 
   const [settings] = useSettings();
   return (
-    showClock && <BinaryClock
+    showClock && <SquaresClock
       orientation={orientation}
       brightness={settings.brightness}
       roundness={settings.roundness}
+      fill={settings.fill}
       showHints={settings.showHints}
     />
   )

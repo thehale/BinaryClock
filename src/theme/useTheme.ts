@@ -50,5 +50,5 @@ const themes = [
 	ClockBlueGrey
 ]
 
-const { initTheme, useTheme } = createTheme<ClockThemeColors>(themes.at(0)!);
+const { initTheme, useTheme } = createTheme<ClockThemeColors>(themes.at(4)!);
 export { initTheme, useTheme };

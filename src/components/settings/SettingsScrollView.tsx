@@ -34,6 +34,12 @@ export default function SettingsScrollView() {
         onValueChange={value => updateSettings({ roundness: value })}
         caption={roundnessString}
       />
+      <SettingRange
+        title="Fill"
+        initialValue={settings.fill}
+        onValueChange={value => updateSettings({ fill: value })}
+        caption={`${Math.round(settings.fill * 100)}%`}
+      />
       <Button title="Reset" onPress={resetToDefaults}/>
     </ScrollView>
   )

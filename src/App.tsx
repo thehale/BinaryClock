@@ -11,6 +11,7 @@ import { StatusBar, View } from 'react-native';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { init } from './init';
 import { useTheme } from './theme/useTheme';
+import MiniClock from './components/MiniClock';
 
 function App() {
   const [initialized, setInitialized] = useState(false);
@@ -20,6 +21,7 @@ function App() {
       <StatusBar hidden={true} />
       <KeepAwake />
       <SafeInsetView>
+        {/* <MiniClock /> */}
         <BinaryClockScreen />
       </SafeInsetView>
     </SafeAreaProvider>
