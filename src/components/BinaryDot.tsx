@@ -41,7 +41,7 @@ const BinaryDot: React.FC<BinaryDotProps> = args => {
   };
 
   const fontOverrides: TextStyle = {
-    fontSize: 40 * props.fill,
+    fontSize: Math.max(1, 40 * props.fill),
   }
 
   return (
