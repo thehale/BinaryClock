@@ -45,18 +45,24 @@ const BinaryDot: React.FC<BinaryDotProps> = args => {
   }
 
   return (
-    <View style={[styles.dot, dotOverrides]}>
-      {props.showHints && props.bit.value && (
-        <View style={styles.hint}>
-          <Text style={[styles.hintText, fontOverrides]}>{props.bit.value}</Text>
-        </View>
-      )}
+    <View style={styles.container}>
+      <View style={[styles.dot, dotOverrides]}>
+        {props.showHints && props.bit.value && (
+          <View style={styles.hint}>
+            <Text style={[styles.hintText, fontOverrides]}>{props.bit.value}</Text>
+          </View>
+        )}
+      </View>
     </View>
   );
 };
 
 function createStyles(theme: ClockTheme) {
   return StyleSheet.create({
+    container: {
+      flex: 1,
+      aspectRatio: 1,
+    },
     dot: {
       flex: 1,
       alignItems: 'center',

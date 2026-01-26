@@ -51,16 +51,14 @@ const FourDigit: React.FC<BinaryDigitProps> = props => {
   };
 
   return (
-    <View style={styles.pair}>
-      <View style={styles.digit}>
-        <BinaryDot bit={props.digit.bits[0]} {...settings} />
-        <BinaryDot bit={props.digit.bits[1]} {...settings} />
-        <BinaryDot bit={props.digit.bits[2]} {...settings} />
-        <BinaryDot bit={props.digit.bits[3]} {...settings} />
-        {props.showHints && (
-          <Text style={[styles.hint, { opacity: props.brightness }]}>{props.digit.value}</Text>
-        )}
-      </View>
+    <View style={styles.digit}>
+      <BinaryDot bit={props.digit.bits[0]} {...settings} />
+      <BinaryDot bit={props.digit.bits[1]} {...settings} />
+      <BinaryDot bit={props.digit.bits[2]} {...settings} />
+      <BinaryDot bit={props.digit.bits[3]} {...settings} />
+      {props.showHints && (
+        <Text style={[styles.hint, { opacity: props.brightness }]}>{props.digit.value}</Text>
+      )}
     </View>
   );
 };
@@ -77,18 +75,16 @@ const SixDigit: React.FC<BinaryDigitProps> = props => {
   };
 
   return (
-    <View style={styles.pair}>
-      <View style={styles.digit}>
-        <BinaryDot bit={props.digit.bits[0]} {...settings} />
-        <BinaryDot bit={props.digit.bits[1]} {...settings} />
-        <BinaryDot bit={props.digit.bits[2]} {...settings} />
-        <BinaryDot bit={props.digit.bits[3]} {...settings} />
-        <BinaryDot bit={props.digit.bits[4]} {...settings} />
-        <BinaryDot bit={props.digit.bits[5]} {...settings} />
-        {props.showHints && (
-          <Text style={[styles.hint, { opacity: props.brightness }]}>{String(props.digit.value).padStart(2, '0')}</Text>
-        )}
-      </View>
+    <View style={styles.digit}>
+      <BinaryDot bit={props.digit.bits[0]} {...settings} />
+      <BinaryDot bit={props.digit.bits[1]} {...settings} />
+      <BinaryDot bit={props.digit.bits[2]} {...settings} />
+      <BinaryDot bit={props.digit.bits[3]} {...settings} />
+      <BinaryDot bit={props.digit.bits[4]} {...settings} />
+      <BinaryDot bit={props.digit.bits[5]} {...settings} />
+      {props.showHints && (
+        <Text style={[styles.hint, { opacity: props.brightness }]}>{String(props.digit.value).padStart(2, '0')}</Text>
+      )}
     </View>
   );
 };
@@ -96,10 +92,6 @@ const SixDigit: React.FC<BinaryDigitProps> = props => {
 function createStyles(theme: ClockTheme) {
   return StyleSheet.create({
     digit: {
-      alignItems: 'center',
-    },
-    pair: {
-      flexDirection: 'row',
       alignItems: 'center',
     },
     hint: {
