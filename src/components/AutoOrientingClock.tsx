@@ -29,7 +29,7 @@ function Content(props: AutoOrientingClockProps) {
 
   const [settings] = useSettings();
   return (
-    showClock && <SquaresClock
+    showClock && <BinaryClock
       orientation={orientation}
       brightness={settings.brightness}
       roundness={settings.roundness}

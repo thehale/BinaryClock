@@ -19,6 +19,7 @@ interface BinaryClockProps {
   orientation?: Orientation;
   brightness?: number;
   roundness?: number;
+  fill?: number;
   showHints?: boolean;
 }
 
@@ -26,6 +27,7 @@ const DEFAULTS = {
   orientation: Orientation.Landscape,
   brightness: DEFAULT_SETTINGS.brightness,
   roundness: DEFAULT_SETTINGS.roundness,
+  fill: DEFAULT_SETTINGS.fill,
   showHints: DEFAULT_SETTINGS.showHints,
 };
 
@@ -52,6 +54,7 @@ const LandscapeClock: React.FC<BinaryClockProps> = props => {
         digit={digits[0]}
         brightness={props.brightness}
         roundness={props.roundness}
+        fill={props.fill}
         showHints={props.showHints}
       />
       <BinaryDigit
@@ -59,6 +62,7 @@ const LandscapeClock: React.FC<BinaryClockProps> = props => {
         digit={digits[1]}
         brightness={props.brightness}
         roundness={props.roundness}
+        fill={props.fill}
         showHints={props.showHints}
       />
       <BinaryDigit
@@ -66,6 +70,7 @@ const LandscapeClock: React.FC<BinaryClockProps> = props => {
         digit={digits[2]}
         brightness={props.brightness}
         roundness={props.roundness}
+        fill={props.fill}
         showHints={props.showHints}
       />
       <BinaryDigit
@@ -73,6 +78,7 @@ const LandscapeClock: React.FC<BinaryClockProps> = props => {
         digit={digits[3]}
         brightness={props.brightness}
         roundness={props.roundness}
+        fill={props.fill}
         showHints={props.showHints}
       />
       <BinaryDigit
@@ -80,6 +86,7 @@ const LandscapeClock: React.FC<BinaryClockProps> = props => {
         digit={digits[4]}
         brightness={props.brightness}
         roundness={props.roundness}
+        fill={props.fill}
         showHints={props.showHints}
       />
       <BinaryDigit
@@ -87,6 +94,7 @@ const LandscapeClock: React.FC<BinaryClockProps> = props => {
         digit={digits[5]}
         brightness={props.brightness}
         roundness={props.roundness}
+        fill={props.fill}
         showHints={props.showHints}
       />
     </View>
@@ -105,6 +113,7 @@ const PortraitClock: React.FC<BinaryClockProps> = props => {
         digit={digits[0]}
         brightness={props.brightness}
         roundness={props.roundness}
+        fill={props.fill}
         showHints={props.showHints}
       />
       <BinaryDigit
@@ -112,6 +121,7 @@ const PortraitClock: React.FC<BinaryClockProps> = props => {
         digit={digits[1]}
         brightness={props.brightness}
         roundness={props.roundness}
+        fill={props.fill}
         showHints={props.showHints}
       />
       <BinaryDigit
@@ -119,6 +129,7 @@ const PortraitClock: React.FC<BinaryClockProps> = props => {
         digit={digits[2]}
         brightness={props.brightness}
         roundness={props.roundness}
+        fill={props.fill}
         showHints={props.showHints}
       />
     </View>
@@ -129,10 +140,9 @@ function createStyles(theme: ClockTheme) {
   return StyleSheet.create({
     binaryClock: {
       flexDirection: 'row',
-      paddingHorizontal: '5%',
-      height: '100%',
+      flex: 1,
       backgroundColor: theme.colors.background,
-      alignItems: 'center',
+      justifyContent: "center",
     },
   });
 }

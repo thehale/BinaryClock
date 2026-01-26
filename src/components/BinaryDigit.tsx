@@ -17,12 +17,14 @@ interface BinaryDigitProps {
   digit: BinaryDigitType;
   brightness?: number;
   roundness?: number;
+  fill?: number;
   showHints?: boolean;
 }
 
 const DEFAULTS = {
   brightness: DEFAULT_SETTINGS.brightness,
   roundness: DEFAULT_SETTINGS.roundness,
+  fill: DEFAULT_SETTINGS.fill,
   showHints: DEFAULT_SETTINGS.showHints,
 };
 
@@ -44,6 +46,7 @@ const FourDigit: React.FC<BinaryDigitProps> = props => {
   const settings = {
     brightness: props.brightness,
     roundness: props.roundness,
+    fill: props.fill,
     showHints: props.showHints,
   };
 
@@ -69,6 +72,7 @@ const SixDigit: React.FC<BinaryDigitProps> = props => {
   const settings = {
     brightness: props.brightness,
     roundness: props.roundness,
+    fill: props.fill,
     showHints: props.showHints,
   };
 
@@ -93,18 +97,16 @@ function createStyles(theme: ClockTheme) {
   return StyleSheet.create({
     digit: {
       alignItems: 'center',
-      flex: 1,
     },
     pair: {
       flexDirection: 'row',
       alignItems: 'center',
-      padding: '2%',
-      flex: 1,
     },
     hint: {
       color: theme.colors.onBackground,
       fontSize: 20,
       fontWeight: "bold",
+      paddingVertical: 10,
     },
   });
 }
