@@ -3,10 +3,11 @@ source 'https://rubygems.org'
 # You may use http://rbenv.org/ or https://rvm.io/ to install and use this version
 ruby ">= 2.6.10"
 
-# Exclude problematic versions of cocoapods and activesupport that causes build failures.
+# Exclude problematic gem versions that cause build failures.
 gem 'activesupport', '>= 7.2.3.1'
 gem 'xcodeproj', '< 1.26.0'
 gem 'concurrent-ruby', '>= 1.3.7'
+gem 'ostruct', '0.6.0'
 
 # Ruby 3.4.0 has removed some libraries from the standard library.
 gem 'bigdecimal'
