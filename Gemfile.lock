@@ -285,6 +285,7 @@ DEPENDENCIES
   fastlane-plugin-versioning
   logger
   mutex_m
+  nkf
   ostruct (= 0.6.0)
   xcodeproj (< 1.26.0)
 
